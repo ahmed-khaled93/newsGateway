@@ -21,6 +21,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
+Route::get('/sport','ArticleController@sportindex');
+
+Route::get('/history','ArticleController@historyindex');
+
+Route::get('/science','ArticleController@scienceindex');
+
+Route::get('/art','ArticleController@artindex');
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/search', function(){
 
 	return view('frontend.search');

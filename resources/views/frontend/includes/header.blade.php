@@ -112,21 +112,34 @@
 										<ul class="dropdown-menu">
 											<!-- Authentication Links -->
 
-								@guest
+										@guest
 
-									<li><a href="{{ route('register') }}"><i class="ion-person-add"></i><div>{{ __('Register') }}</div></a></li>
+											<li><a href="{{ route('register') }}"><i class="ion-person-add"></i><div>{{ __('Register') }}</div></a></li>
 
-									<li><a href="{{ route('login') }}"><i class="ion-person"></i><div>{{ __('Login') }}</div></a></li>
-									
-	                    	    @endguest
-											<li><a href="forgot.html">Forgot Password</a></li>
-											<li><a href="reset.html">Reset Password</a></li>
+											<li><a href="{{ route('login') }}"><i class="ion-person"></i><div>{{ __('Login') }}</div></a></li>
+											
+			                    	    @endguest
+													<li><a href="forgot.html">Forgot Password</a></li>
+													<li><a href="reset.html">Reset Password</a></li>
 										</ul>
 									</li>
 									<!-- end auth -->
 
+									<!-- Articals Category -->
 
-									<li><a href="/category">Category</a></li>
+									<li><a href="#">Articals Category <i class="ion-ios-arrow-right"></i> </a>
+
+										<ul class="dropdown-menu">
+											<li><a href="/sport">Sport</a></li>
+											<li><a href="/science">Science</a></li>
+											<li><a href="/history">History</a></li>
+											<li><a href="/art">Art</a></li>
+										</ul>
+
+									</li>
+									
+									<!-- End Articals Category -->
+
 									<li><a href="single.html">Single</a></li>
 									<li><a href="page.html">Page</a></li>
 									<li><a href="/search">Search</a></li>
@@ -145,6 +158,7 @@
 							<li class="dropdown magz-dropdown"><a href="#">Dropdown <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
 									<li><a href="category.html">Internet</a></li>
+									
 									<li class="dropdown magz-dropdown"><a href="category.html">Troubleshoot <i class="ion-ios-arrow-right"></i></a>
 										<ul class="dropdown-menu">
 											<li><a href="category.html">Software</a></li>
@@ -159,6 +173,7 @@
 										</ul>
 									</li>
 									<li><a href="category.html">Office</a></li>
+									
 									<li class="dropdown magz-dropdown"><a href="#">Programming <i class="ion-ios-arrow-right"></i></a>
 										<ul class="dropdown-menu">
 											<li><a href="category.html">Web</a></li>
@@ -178,6 +193,7 @@
 											<li><a href="category.html">Desktop</a></li>
 										</ul>
 									</li>
+								
 								</ul>
 							</li>
 							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Mega Menu <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>

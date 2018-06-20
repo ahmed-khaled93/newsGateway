@@ -26,7 +26,7 @@
 				<div class="row">
 					<div class="col-md-12">
 	          <ol class="breadcrumb">
-	          	<li><a href="#">Home</a></li>
+	          	<li><a href="/">Home</a></li>
 	            <li class="active">Contact Us</li>
 	          </ol>
 						<h1 class="page-title">Contact Us</h1>
@@ -48,6 +48,7 @@
 										Indonesia, Bogor Barat 16115
 									</p>
 								</div>
+								
 								<div class="col-md-6 col-sm-6">
 									<form class="row contact" id="contact-form">
 										<div class="col-md-6">
@@ -56,27 +57,32 @@
 												<input type="text" class="form-control" name="name" required="">
 											</div>
 										</div>
+										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Email <span class="required"></span></label>
 												<input type="text" class="form-control" name="email" required="">
 											</div>
 										</div>
+										
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Subject</label>
 												<input type="text" class="form-control" name="subject">
 											</div>
 										</div>
+										
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Your message <span class="required"></span></label>
 												<textarea class="form-control" name="message" required=""></textarea>
 											</div>
 										</div>
+										
 										<div class="col-md-12">
 											<button class="btn btn-primary">Send Message</button>
 										</div>
+									
 									</form>
 								</div>
 							</div>
