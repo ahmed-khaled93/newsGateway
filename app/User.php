@@ -28,7 +28,8 @@ class User extends Authenticatable
     ];
 
 
-    public function VerifyUser(){
+    public function VerifyUser()
+    {
 
         return $this->hasOne('App\VerifyUser');
 

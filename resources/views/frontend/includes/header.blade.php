@@ -102,7 +102,7 @@
 							<li class="dropdown magz-dropdown">
 								<a href="category.html">Pages <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
-									<li><a href="index.html">Home</a></li>
+									<li><a href="/">Home</a></li>
 									
 									
 
@@ -127,17 +127,31 @@
 
 									<!-- Articals Category -->
 
-									<li><a href="#">Articals Category <i class="ion-ios-arrow-right"></i> </a>
+									
+
+									<li>
+										<a href="#">Articals Category 
+											<i class="ion-ios-arrow-right"></i>
+										</a>
+										
+										
 
 										<ul class="dropdown-menu">
-											<li><a href="/sport">Sport</a></li>
-											<li><a href="/science">Science</a></li>
-											<li><a href="/history">History</a></li>
-											<li><a href="/art">Art</a></li>
+											
+											@foreach($catgs as $catg)
+
+											<li><a href="/categories/{{ $catg->title }}">{{ $catg->title }}</a></li>
+
+											@endforeach
+											
 										</ul>
+
+										
 
 									</li>
 									
+									
+
 									<!-- End Articals Category -->
 
 									<li><a href="single.html">Single</a></li>

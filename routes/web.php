@@ -1,5 +1,7 @@
 <?php
 
+use App\Catg;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,48 +13,48 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function ()
+{
+
+	$catgs = Catg::catgs();
+
     return view('frontend.index');
+
 });
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
-Route::get('/sport','ArticleController@sportindex');
+Route::get('/articles/{article}','ArticleController@show');
 
-Route::get('/history','ArticleController@historyindex');
-
-Route::get('/science','ArticleController@scienceindex');
-
-Route::get('/art','ArticleController@artindex');
+Route::get('/categories/{catName}','ArticleController@articles');
 
 
 
 
+// ================================ Back End =======================================
 
 
+Route::get('/dashboard', function()
+{
+	$categories = Catg::categories();
 
-
-
-
-
-Route::get('/search', function(){
-
-	return view('frontend.search');
+	return view('backend.index');
 
 });
 
-Route::get('/contact',function(){
+Route::get('/dashboard/articles/create','ArticleController@create');
 
-	return view('frontend.contact-us');
+Route::get('/dashboard/articles/{id}','ArticleController@dashboardArticles');
 
-});
+Route::post('/createArticle','ArticleController@store');
 
-Route::get('/category',function(){
+Route::get('/dashboard/articles/edit/{article}','ArticleController@editArticle');
 
-	return view('frontend.category');
+Route::post('/dashboard/articles/edit/{articleId}','ArticleController@updateArticle');
 
-});
+Route::get('/articles/delete/{articleId}', 'ArticleController@deleteArticle');

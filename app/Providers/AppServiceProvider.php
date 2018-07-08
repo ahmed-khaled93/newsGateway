@@ -15,6 +15,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        view()->composer('frontend.includes.header', function($view)
+        {
+
+            $view->with('catgs',\App\Catg::catgs());
+
+        });
+
+
+        view()->composer('backend.includes.sidebar-menu', function($view)
+        {
+
+            $view->with('categories',\App\Catg::categories());
+
+        });
+        
     }
 
     /**
