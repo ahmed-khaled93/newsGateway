@@ -127,15 +127,12 @@
 
 									<!-- Articals Category -->
 
-									
-
 									<li>
 										<a href="#">Articals Category 
 											<i class="ion-ios-arrow-right"></i>
 										</a>
 										
 										
-
 										<ul class="dropdown-menu">
 											
 											@foreach($catgs as $catg)
@@ -147,10 +144,7 @@
 										</ul>
 
 										
-
 									</li>
-									
-									
 
 									<!-- End Articals Category -->
 
@@ -158,6 +152,7 @@
 									<li><a href="page.html">Page</a></li>
 									<li><a href="/search">Search</a></li>
 									<li><a href="/contact">Contact</a></li>
+									
 									<li class="dropdown magz-dropdown">
 										<a href="#">Error <i class="ion-ios-arrow-right"></i></a>
 										<ul class="dropdown-menu">
@@ -167,15 +162,23 @@
 											<li><a href="503.html">503</a></li>
 										</ul>
 									</li>
+								
 								</ul>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="#">Dropdown <i class="ion-ios-arrow-right"></i></a>
+							
+									<!-- Start Multimedia Category -->
+							<li class="dropdown magz-dropdown"><a href="#"> Multimedia <i class="
+								ion-ios-arrow-right"></i></a>
+								
 								<ul class="dropdown-menu">
-									<li><a href="category.html">Internet</a></li>
-									
-									<li class="dropdown magz-dropdown"><a href="category.html">Troubleshoot <i class="ion-ios-arrow-right"></i></a>
+
+									<!-- Start Multimedia Photos -->
+									<li class="dropdown magz-dropdown"><a href="#"> Photos <i class="ion-ios-arrow-right"></i></a>
+										
 										<ul class="dropdown-menu">
-											<li><a href="category.html">Software</a></li>
+											
+											<li><a href="/albums/albums">Albums</a></li>
+											
 											<li class="dropdown magz-dropdown"><a href="category.html">Hardware <i class="ion-ios-arrow-right"></i></a>
 												<ul class="dropdown-menu">
 													<li><a href="category.html">Main Board</a></li>
@@ -185,10 +188,13 @@
 											</li>
 											<li><a href="category.html">Brainware</a>
 										</ul>
-									</li>
-									<li><a href="category.html">Office</a></li>
 									
-									<li class="dropdown magz-dropdown"><a href="#">Programming <i class="ion-ios-arrow-right"></i></a>
+									</li>
+									<!-- End Multimedia Photos -->
+									
+									<!-- Start Multimedia Videos -->
+									<li class="dropdown magz-dropdown"><a href="#"> Videos <i class="ion-ios-arrow-right"></i></a>
+										
 										<ul class="dropdown-menu">
 											<li><a href="category.html">Web</a></li>
 											<li class="dropdown magz-dropdown"><a href="category.html">Mobile <i class="ion-ios-arrow-right"></i></a>
@@ -206,10 +212,14 @@
 											</li>
 											<li><a href="category.html">Desktop</a></li>
 										</ul>
+									
 									</li>
-								
+									<!-- End Multimedia Videos -->
+	
 								</ul>
 							</li>
+									<!-- End Multimedia Category -->
+							
 							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Mega Menu <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
@@ -289,6 +299,7 @@
 									</div>
 								</div>
 							</li>
+							
 							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Column <i class="ion-ios-arrow-right"></i></a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
@@ -337,6 +348,7 @@
 									</div>
 								</div>
 							</li>
+							
 							<li class="dropdown magz-dropdown"><a href="#">Dropdown Icons <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
 									<li><a href="#"><i class="icon ion-person"></i> My Account</a></li>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Catg;
+use App\Album;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ Route::get('/', function ()
 
 	$catgs = Catg::catgs();
 
+	// $albums = Album::albums();
+
     return view('frontend.index');
 
 });
@@ -33,7 +36,11 @@ Route::get('/articles/{article}','ArticleController@show');
 
 Route::get('/categories/{catName}','ArticleController@articles');
 
+Route::get('/albums/albums', 'AlbumController@albums');
 
+Route::get('/albums/view/{albumId}', 'AlbumController@viewAlbums');
+
+Route::get('/albums/photos', 'AlbumController@photos');
 
 
 // ================================ Back End =======================================
@@ -57,4 +64,5 @@ Route::get('/dashboard/articles/edit/{article}','ArticleController@editArticle')
 
 Route::post('/dashboard/articles/edit/{articleId}','ArticleController@updateArticle');
 
-Route::get('/articles/delete/{articleId}', 'ArticleController@deleteArticle');
+Route::post('/dashboard/article/delete', 'ArticleController@deleteArticle')->name('delete_article');
+
