@@ -20,8 +20,8 @@
         </li>
         
 
-                          <!-- Articles -->
-        <li class="active treeview">
+                          <!-- Start Articles -->
+        <li class="{{ in_array('articles', (isset($menuArticles) ? $menuArticles : [])) ? 'active' : ''}} treeview">
           
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Articles</span>
@@ -34,7 +34,7 @@
             
             @foreach($categories as $category)
 
-            <li class="active">
+            <li class="{{ in_array('catg_id', (isset($menuArticles) ? $menuArticles : [])) ? 'active' : '' }}">
               <a href="/dashboard/articles/{{$category->id}}">
                 <i class="fa fa-circle-o"></i>
                   {{ $category->title }} 
@@ -47,6 +47,38 @@
         
         </li>
                           <!-- End Articles -->
+
+                          <!-- Start Multimedia -->
+         <li class="{{ in_array('media', (isset($menu) ? $menu : [])) ? 'active' : ''}} treeview">
+          
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span> Multimedia </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          
+          <ul class="active treeview-menu">
+
+            <li class="{{ in_array('photos', (isset($menu) ? $menu : [])) ? 'active' : '' }}">
+              <a href="/dashboard/multimedia/albums">
+                <i class="fa fa-circle-o"></i>
+                  Images
+              </a>
+            </li>
+            
+            <li>
+              <a href="#">
+                <i class="fa fa-circle-o"></i>
+                  Videos 
+              </a>
+            </li>
+               
+          </ul>
+        
+        </li>
+
+                          <!-- End Multimedia -->
 
 
         <li class="treeview">

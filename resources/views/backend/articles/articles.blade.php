@@ -100,8 +100,8 @@
               </table>
             </div>
             <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+</div>
+<!-- /.box -->
 
 
 <div class="modal fade" id="modal-default">
@@ -131,6 +131,7 @@
           <!-- /.modal-dialog -->
   </div>
 <!-- /.modal -->
+
 @endsection
 
 @section('js')

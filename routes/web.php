@@ -16,10 +16,8 @@ use App\Album;
 
 Route::get('/', function ()
 {
-
+	
 	$catgs = Catg::catgs();
-
-	// $albums = Album::albums();
 
     return view('frontend.index');
 
@@ -36,33 +34,68 @@ Route::get('/articles/{article}','ArticleController@show');
 
 Route::get('/categories/{catName}','ArticleController@articles');
 
+// ------------------------------- Photos ------------------------------------------
+
 Route::get('/albums/albums', 'AlbumController@albums');
 
 Route::get('/albums/view/{albumId}', 'AlbumController@viewAlbums');
 
 Route::get('/albums/photos', 'AlbumController@photos');
 
+// ------------------------------- play lists ---------------------------------------
+
+Route::get('/albums/videoLists', 'AlbumController@videoLists');
+
+Route::get('/albums/videos', 'AlbumController@videos');
+
+Route::get('/album/video/list/{listId}/show/{videoId}', 'AlbumController@showVideo');
+
+// --------------------------------- Channels ----------------------------------------
+
+Route::get('/albums/channelLists', 'AlbumController@channels');
+
+Route::get('/albums/channel/listVideos', 'AlbumController@channelLists');
+
+Route::get('/album/channel/list/{id}', 'AlbumController@channelListItems');
+
+// Route::get('/album/video/list/{channelId}/show/{videoId}', 'AlbumController@showVideo');
+
 
 // ================================ Back End =======================================
 
-
-Route::get('/dashboard', function()
+Route::prefix('dashboard')->group(function()
 {
-	$categories = Catg::categories();
+	Route::get('articles/edit/{article}','ArticleController@editArticle');
+	
+	Route::get('articles/create','ArticleController@create');
+	
+	Route::get('articles/{id}','ArticleController@dashboardArticles');
+	
+	Route::get('multimedia/albums','AlbumController@photoAlbums');
+	
+	Route::get('albums/photos/{albumId}', 'AlbumController@showAlbumPhotos');
+	
+	Route::get('albums/AddImage','AlbumController@AddImage');
 
-	return view('backend.index');
+
+	Route::post('/createArticle','ArticleController@store');
+	
+	Route::post('articles/edit/{articleId}','ArticleController@updateArticle');
+	
+	Route::post('article/delete', 'ArticleController@deleteArticle')->name('delete_article');
+	
+	Route::post('albums/createNewAlbum', 'AlbumController@storeNewAlbum');
+	
+	Route::post('albums/addNewImage/{albumId}', 'AlbumController@storeNewImage');
+
+	Route::post('albums/deleteImage', 'AlbumController@deleteImage')->name('delete_image');
+
+	Route::get('/', function()
+	{
+		$categories = Catg::categories();
+		$albums = Album::albums();
+		
+		return view('backend.index');
+	});
 
 });
-
-Route::get('/dashboard/articles/create','ArticleController@create');
-
-Route::get('/dashboard/articles/{id}','ArticleController@dashboardArticles');
-
-Route::post('/createArticle','ArticleController@store');
-
-Route::get('/dashboard/articles/edit/{article}','ArticleController@editArticle');
-
-Route::post('/dashboard/articles/edit/{articleId}','ArticleController@updateArticle');
-
-Route::post('/dashboard/article/delete', 'ArticleController@deleteArticle')->name('delete_article');
-

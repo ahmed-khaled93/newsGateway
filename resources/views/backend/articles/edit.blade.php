@@ -44,7 +44,19 @@
         <li><a href="#">Forms</a></li>
         <li class="active">General Elements</li>
       </ol>
-    </section>
+</section>
+
+@if(count($errors) > 0)
+    <div class="row col-lg-12">
+        <div class="alert alert-danger">
+          <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+    </div>
+@endif
 
 
 <section class="content">
@@ -66,12 +78,12 @@
 
               <div class="box-body">
 
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('catg_id') ? ' has-error' : '' }}">
                     <label> Category type : </label>
                     
                     
 
-                    <select name="catg_id" class="form-control" required >
+                    <select name="catg_id" class="form-control{{ $errors->has('catg_id') ? ' is-invalid' : '' }}" required >
                         
 
                         @foreach($categories as $category)
@@ -86,12 +98,12 @@
                 
                 
                 
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title : </label>
-                    <input type="text" class="form-control" name="title" id="title"  autofocus required value="{{ $article->title or ''}}">
+                    <input type="text" class="form-control" name="title" id="title"  autofocus  value="{{ $article->title or ''}}">
                 </div>
 
-                <div class="form-group"></div>
+                <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}"></div>
                 
                 <div class="form-group">
                     <label for="body">Body : </label>

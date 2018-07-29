@@ -3,19 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\ArticleRepository;
+use App\Repositories\CategoryRepository;
+use App\Http\Requests\Backend\Articles\StoreAndUpdateArticleRequest;
 use App\Article;
 use App\Catg;
 
 class ArticleController extends Controller
 {
 
+	protected $articleRepository;
+
+	public function __construct(ArticleRepository $articleRepository)
+    {
+        $this->articleRepository = $articleRepository;
+    }
+
 // ============================ Front End ====================================	
 
 
-	public function articles($catName)
+	public function articles($catName, CategoryRepository $CategoryRepository)
 	{
-		$cat = Catg::with('articles')->where('title', '=', $catName)->get();
-		$articles = $cat[0]->articles;
+		
+		$articles = $CategoryRepository->getArticleByName($catName);
 		return view ('frontend.articles.categories',compact('articles'));
 
 	}
@@ -25,7 +35,7 @@ class ArticleController extends Controller
 	public function show($id)
 	{
 
-		$article = Article::find($id);
+		$article = $this->articleRepository->showArticle($id);
 
 		return view('frontend.articles.show' , compact('article'));
 
@@ -40,46 +50,27 @@ class ArticleController extends Controller
 	{
 
 		$articles = Article::where('catg_id','=', $id)->get();
+		$menuArticles = ['articles', 'catg_id'];
 
-		return view('backend.articles.articles',compact('articles') );
+		return view('backend.articles.articles',compact('articles', 'menuArticles') );
 
 	}
 
 
-	public function create()
+	public function create(CategoryRepository $CategoryRepository)
 	{
 
-		$catgs = Catg::all();
+		$catgs = $CategoryRepository->getCreateArticlePage();
 
 		return view('backend.articles.create', compact('catgs'));
 
 	}
 
 
-	public function store(Request $request)
+	public function store(StoreAndUpdateArticleRequest $request)
 	{
 		
-		$this->validate($request, [
-
-        	'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-    	]);
-
-		// dd(request(['title','body','catg_id']));
-
-		
-    	$article = new Article(request(['title','body','catg_id']));
-
-		$image = request('image');
-		
-    	$article->image  = time().'.'.$image->getClientOriginalExtension();
-
-    	$image->move(public_path('/images/articles'),$article->image );
-
-    	$article->save();
-
-
-		// Article::create(request(['title','body','catg_id','image']));
+		$article = $this->articleRepository->storeArticle($request);
 
 		return redirect('/dashboard/articles/'.$request->catg_id);
 
@@ -97,40 +88,10 @@ class ArticleController extends Controller
 	}
 	
 
-	public function updateArticle($articleId, Request $request)
+	public function updateArticle($articleId, StoreAndUpdateArticleRequest $request)
 	{
-		// dd($request);
-		$article = Article::find($articleId);
 
-		// dd($article->image);
-		// $article->delete(public_path('/images/articles'),$article->image);
-		// File::delete($article->image);
-		
-
-    	
-    	// $article->image->delete();
-    	// $image_path->delete();
-    	
-    	
-
-		$article->update(request(['title','body','catg_id']));
-
-		if (request('image')) {
-			
-			$image_path = public_path('/images/articles').'/'.$article->image;
-	    	
-	    	unlink($image_path);
-
-			$image = request('image');
-	    	
-	    	$article->image  = time().'.'.$image->getClientOriginalExtension();
-	    	// dd($image);
-
-	    	$image->move(public_path('/images/articles'),$article->image );
-
-	    	$article->save();
-			
-		}
+		$article = $this->articleRepository->updateArticle($articleId, $request);
 		
 
 		return redirect('/dashboard/articles/'.$request->catg_id);
@@ -141,22 +102,7 @@ class ArticleController extends Controller
 	public function deleteArticle(Request $request)
 	{
 		
-		$hdnId = $request->hdnId;
-		// dd($hdnId);
-
-		$delete = Article::find($request->hdnId);
-		// dd($delete);
-		
-		if ($delete->image) {
-			// dd($delete->image);
-			
-			$image_path = public_path('/images/articles').'/'.$delete->image;
-	    	
-	    	unlink($image_path);
-	    }
-		
-
-		$delete->delete();
+		$delete = $this->articleRepository->deleteArticle($request);		
 
 		return back();
 

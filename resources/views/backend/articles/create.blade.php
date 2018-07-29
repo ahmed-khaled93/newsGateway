@@ -34,6 +34,18 @@
 
 @section('content')
 
+@if(count($errors) > 0)
+    <div class="row col-lg-12">
+        <div class="alert alert-danger">
+          <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+    </div>
+@endif
+
 <section class="content-header">
       <h1>
         General Form Elements
@@ -61,12 +73,12 @@
             <!-- /.box-header -->
             
             <!-- form start -->
-            <form method="post" action="/createArticle" role="form" enctype="multipart/form-data">
+            <form method="post" action="/dashboard/createArticle" role="form" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
               <div class="box-body">
 
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('catg_id') ? ' has-error' : '' }}">
                     <label> Category type : </label>
                     
                     
@@ -85,19 +97,19 @@
 
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title : </label>
                     <input type="text" class="form-control" name="title" id="title" placeholder="Article Title" autofocus required>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                     <label for="body">Body : </label>
                     <textarea id="body" name="body" class="form-control" placeholder="Article Body" required ></textarea>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                   <label for="exampleInputFile">File input</label>
-                  <input type="file" id="exampleInputFile" name="image">
+                  <input type="file" id="exampleInputFile" name="image" class="form-control">
 
                   <p class="help-block">Example block-level help text here.</p>
                 </div>

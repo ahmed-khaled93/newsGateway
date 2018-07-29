@@ -14,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         Schema::defaultStringLength(191);
+
 
         view()->composer('frontend.includes.header', function($view)
         {
@@ -23,12 +25,6 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        view()->composer('frontend.includes.header', function($view)
-        {
-
-            $view->with('albums',\App\Album::albums());
-
-        });
 
         view()->composer('backend.includes.sidebar-menu', function($view)
         {
@@ -37,6 +33,13 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+
+        view()->composer('backend.includes.sidebar-menu', function($view)
+        {
+
+            $view->with('albums',\App\Album::albums());
+
+        });
         
     }
 
