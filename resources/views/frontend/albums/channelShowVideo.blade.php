@@ -1,9 +1,9 @@
 @extends('frontend/layouts.master')
 
 @section('css')
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="/frontend/scripts/bootstrap/bootstrap.min.css">
-		<!-- IonIcons -->
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="/frontend/scripts/bootstrap/bootstrap.min.css">
+        <!-- IonIcons -->
         <link rel="stylesheet" href="/frontend/scripts/ionicons/css/ionicons.min.css">
         <!-- Toast -->
         <link rel="stylesheet" href="/frontend/scripts/toast/jquery.toast.min.css">
@@ -22,67 +22,38 @@
 @section('content')
 
 <section class="category">
-	<div class="container">
-		<div class="row">
-  			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="row">
-					
-					<article class="article col-md-12">
-						<div class="inner">
-							
-							@foreach($articles as $article)
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="row">                                        
 
-							<figure>
-								<a href="/articles/{{ $article->id }}">
-									<img src="/images/articles/{{ $article->banner }}" alt="Sample Article">
-								</a>
-							</figure>
-							
-							<div class="padding">
-								
-								
+                    
+                    <div class="gallery-grid">
+                    
+                        @if(isset($video))
+                            
+                            <div class="col-md-4 gallery-grid">
+                                <div class="grid">
+                                    <figure class="effect-roxy"> 
+                                              
+                                            <iframe width="854" height="480" src="https://www.youtube.com/embed/{{$video}}?list={{$cahnnelId}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            
+                                        </a>
+                                    </figure>
+                                </div>
+                            </div>
+                        @else
+                            <center>There are no videos yet !!!!</center>
+                        @endif
+                    
+                    </div>
 
-								<div class="detail">
-									<div class="time"> {{ $article->created_at->toFormattedDateString() }} </div>
-									<div class="category"><a href="#">Healthy</a></div>
-								</div>
-								
-								
-
-								<h2>
-									<a href="/articles/{{ $article->id }}">
-								 
-								 	{{ $article->title }}
-
-									</a>
-								</h2>
-								
-								<p> {{ $article->body }} </p>
-								
-								
-
-								<footer>
-									<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-									<a class="btn btn-primary more" href="single.html">
-										<div>More</div>
-										<div><i class="ion-ios-arrow-thin-right"></i></div>
-									</a>
-								</footer>
-								
-							@endforeach
-
-							</div>
-						
-						</div>
-					</article>
-					
-				
-				</div>
-			</div>
-			
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
 
 @endsection
 

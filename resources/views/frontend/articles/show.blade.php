@@ -24,19 +24,18 @@
 <section class="category">
         <div class="container">
                 <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="row">
+                        <!-- <div class="col-md-6 col-sm-6 col-xs-12"> -->
+                                <div class="row" style="text-align: center; margin-left: 200px; margin-right: 200px;">
 
-                                       <h1> {{ $article->title }} </h1>
-
-                                       <!-- <figure>{{ $article->image }}</figure> -->
-                                       <img src="/images/articles/{{ $article->image }}" style="width: 100%">
+                                       <h3 style="padding-top: 30px;"> {{ $article->title }} </h3>
+                                       <br>
+                                       <img src="/images/articles/{{ $article->image }}" style="width: 100%; padding-right: 50px; padding-left: 50px;">
                                        <br><br>
 
                                         {{ $article->body }}
                                 
                                 </div>
-                        </div>
+                        <!-- </div> -->
                 </div>
         </div>
 </section>

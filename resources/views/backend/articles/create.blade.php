@@ -34,17 +34,6 @@
 
 @section('content')
 
-@if(count($errors) > 0)
-    <div class="row col-lg-12">
-        <div class="alert alert-danger">
-          <ul>
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-    </div>
-@endif
 
 <section class="content-header">
       <h1>
@@ -61,6 +50,17 @@
 
 <section class="content">
     <div class="row">
+      @if(count($errors) > 0)
+          <div class="row col-lg-12">
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+          </div>
+      @endif
         
         <!-- left column -->
         <div class="col-md-8">

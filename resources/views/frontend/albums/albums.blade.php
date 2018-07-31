@@ -24,19 +24,19 @@
 <section class="category">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="row">                                        
-
                     @foreach( $albums as $album )
+                    <div class="col-md-4 col-sm-6 col-xs-12" >
 
                         @if($album->photos->last())
-                            <h3><a href="/albums/view/{{ $album->id }}"> {{ $album->title }} </a> </h3>
-                            <img src="/images/albums/{{$album->photos->last()->image}}" style="width: 100%; height: 300px">
-
+                            <h4><a href="/albums/view/{{ $album->id }}"> {{ $album->title }} 
+                            <img src="/images/albums/{{$album->photos->last()->image}}" style="width: 100%; max-height: 200px">
+                            </a> </h4>
                         @endif
                     
+                    </div>
                     @endforeach
-
                 </div>
             </div>
         </div>

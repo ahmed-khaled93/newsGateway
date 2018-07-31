@@ -13,8 +13,6 @@
         <!-- Magnific Popup -->
         <link rel="stylesheet" href="/frontend/scripts/magnific-popup/dist/magnific-popup.css">
         <link rel="stylesheet" href="/frontend/scripts/sweetalert/dist/sweetalert.css">
-        <!-- Magnific Popup core CSS file -->
-        <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
         <!-- Custom style -->
         <link rel="stylesheet" href="/frontend/css/style.css">
         <link rel="stylesheet" href="/frontend/css/skins/all.css">
@@ -26,20 +24,41 @@
 <section class="category">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="row">
-                      
-                    @foreach( $photos as $photo )
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <h6 style="max-height: 20px;"> {{ $photo->title }} </h6>
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="row">                                        
+
+                    <h3> Play List </h3>
+                    <div class="gallery-grid">
                     
-                            <figure>  
-                                <a class="test-popup-link" href="/images/albums/{{ $photo->image }}">
-                                <img src="/images/albums/{{ $photo->image }}" style="width: 100%; max-height: 150px;height: 150px">
-                                </a>
-                            </figure>
-                        </div>
-                    @endforeach
+                        @if(isset($playlists['results']))
+                            @foreach($playlists['results'] as $playlist)
+                                
+                                    <div class="col-md-4 gallery-grid">
+                                        <div class="grid">
+                                
+	                
+	                                        <figure class="effect-roxy">
+                                                <a class="example-image-link" href="/album/channel/list/{{$playlist->id}}">
+                                                    
+                                                    <img src="{{$playlist->snippet->thumbnails->medium->url or ''}}">
+                    
+                                                    <figcaption>
+                                                        <span>{{$playlist->snippet->title or ''}}</span>
+                                                    </figcaption>   
+                    
+                                                </a>
+                                            </figure>
+
+	                                    </div>
+	                                </div>
+                                
+                                    
+	                        @endforeach
+	                    @else
+	                        <center>There are no videos yet !!!!</center>
+	                    @endif
+                    
+                    </div>
 
                 </div>
             </div>
@@ -63,18 +82,4 @@
     <script src="/frontend/scripts/toast/jquery.toast.min.js"></script>
     <script src="/frontend/js/demo.js"></script>
     <script src="/frontend/js/e-magz.js"></script>
-    <!-- Magnific Popup core JS file -->
-    <script src="magnific-popup/jquery.magnific-popup.js"></script>
-    
-    <script>
-        $(document).ready(function() {
-        $('.test-popup-link').magnificPopup({
-            type:'image',
-            gallery:{
-                enabled:true
-              }
-        });
-        });
-
-    </script>
 @endsection

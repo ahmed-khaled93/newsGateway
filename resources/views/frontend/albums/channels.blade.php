@@ -1,9 +1,9 @@
 @extends('frontend/layouts.master')
 
 @section('css')
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="/frontend/scripts/bootstrap/bootstrap.min.css">
-		<!-- IonIcons -->
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="/frontend/scripts/bootstrap/bootstrap.min.css">
+        <!-- IonIcons -->
         <link rel="stylesheet" href="/frontend/scripts/ionicons/css/ionicons.min.css">
         <!-- Toast -->
         <link rel="stylesheet" href="/frontend/scripts/toast/jquery.toast.min.css">
@@ -22,61 +22,44 @@
 @section('content')
 
 <section class="category">
-	<div class="container">
-		<div class="row">
-  			
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="row">
-					
-					<article class="article col-md-12">
-						<div class="inner">
-							
-							@foreach($articles as $article)
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="row">                                        
 
-							<figure>
-								<a href="/articles/{{ $article->id }}">
-									<img src="/images/articles/{{ $article->banner }}" alt="Sample Article">
-								</a>
-							</figure>
-							
-							<div class="padding">
-								
-								
-								<div class="detail">
-									<div class="time"> {{ $article->created_at->toFormattedDateString() }} </div>
-									<div class="category"><a href="category.html">Lifestyle</a></div>
-								</div>
-								
-								<h2>
-									<a href="/articles/{{ $article->id }}">
+                    <h3> Play List </h3>
+                    <div class="gallery-grid">
+                    
 
-									{{ $article->title }}
+                    @if(isset($channel))
+                            
+                            
+                                <div class="col-md-6 gallery-grid">
+                                    <div class="grid">
+                                        <figure class="effect-roxy">
+                                            <a class="example-image-link" href="/albums/channel/listVideos" target="blank">
+                                                <img src="{{$channel->snippet->thumbnails->medium->url}}">
+                                                
+                                                <figcaption>
+                                                    <h6>{{$channel->snippet->title or ''}}</h6>
+                                                </figcaption>   
+                                            </a>
+                                
+                                        </figure>
+                                    </div>
+                                </div>
+                            
+                            
+                    @else
+                        <center>There are no videos yet !!!!</center>
+                    @endif
 
-									</a>
-								</h2>
+                    </div>
 
-								<p> {{ $article->body }} </p>
-	
-								<footer>
-									<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-									<a class="btn btn-primary more" href="single.html">
-										<div>More</div>
-										<div><i class="ion-ios-arrow-thin-right"></i></div>
-									</a>
-								</footer>
-							
-							@endforeach
-
-							</div>
-						
-						</div>
-					</article>
-				
-				</div>
-			</div>
-		
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 @endsection

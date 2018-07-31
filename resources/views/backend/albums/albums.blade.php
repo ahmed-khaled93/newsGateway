@@ -1,3 +1,4 @@
+
 @extends('backend/layouts.master')
 
 @section('css')
@@ -39,7 +40,7 @@
 
 @section('content')
 
-    <!-- Main content -->
+<!-- Main content -->
 <section class="content-header">
 
   <h1>
@@ -54,32 +55,44 @@
 <div class="row" style="padding: 20px">
       <a class="btn btn-success" href="#" data-toggle="modal" data-target="#modal-default" data-id="" >
         <i class="fa fa-plus"></i> 
-        Add New Image 
+        Add New Album 
       </a>
 </div>
 
 
 <div class="row">
-@foreach($photos as $photo)
-        
+
+@foreach($albums as $album)
+    
+    <a href="/dashboard/albums/photos/{{$album->id}}">
+        	
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->
-                                          
-      <h4> {{ $photo->title }} </h4>
-             
-          <img src="img/blank.gif" alt="Photo" width="250px" height="200px" data-src="/images/albums/{{ $photo->image }}" />
-        <br><br>
-          
-    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modal-default-delete" data-id="{{ $photo->id }}">Delete </a>
-    </div>
 
+	        @if($album->photos->last())
+      		
+      		<div class="small-box bg-aqua" style="background-image:url('/images/albums/{{$album->photos->last()->image}}');background-repeat:no-repeat; background-size:cover;">
+      		@else
+
+      		<div class="small-box bg-aqua" style="background-image:url('');background-repeat:no-repeat; background-size:cover;">
+	            
+	        @endif
+
+        <div class="inner" style="height: 150px">
+          <p> {{ $album->title }} </p>
+        </div>
+      
+      </div>
+    </div>
     
+    </a>
+
 @endforeach
 
 </div>
 
 
-</section>
+</section> 
 
 <div class="modal fade" id="modal-default">
   <div class="modal-dialog">
@@ -88,54 +101,44 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"> New Image </h4>
+            <h4 class="modal-title"> New Album </h4>
           </div>
           
           <div class="modal-body">
-            
-            <form method="post" action="/dashboard/albums/addNewImage/{{$albumId}}" role="form" enctype="multipart/form-data">
+            @if(count($errors) > 0)
+              <div class="row col-lg-12">
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+              </div>
+            @endif
+          	
+            <form method="post" action="/dashboard/albums/createNewAlbum" role="form" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
               <div class="box-body">
 
-                <div class="form-group">
-                    <label> Album : </label>
-                    
-                    
-                    <select name="album_id" class="form-control" required >
-                                          
-                        @foreach($albums as $album)
-                            
-                            <option value="{{ $album->id }}" {{ ($albumId == $album->id)? 'selected' : '' }}> {{ $album->title }} </option>
-                        
-                        @endforeach
-
-                    </select>
-
+                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                    <label for="title"> Album Title : </label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Album Title" autofocus required>
                 </div>
                 
-                <div class="form-group">
-                    <label for="title">Title : </label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Image Title" autofocus required>
-                </div>
-                
-
-                <div class="form-group">
-                  <label for="exampleInputFile"> Image : </label>
-                  <input type="file" id="exampleInputFile" name="image">
-                </div>
                 
                 </div>                
               <!-- /.box-body -->
               
-            <div class="modal-footer">
-              <input type="submit" class="btn btn-primary" value=" Add " />
-              <input type="hidden" name="hdnId" id="hdnId" value="">
-            </div>
+	          <div class="modal-footer">
+	            <input type="submit" class="btn btn-primary" value="Create Album" />
+	            <input type="hidden" name="hdnId" id="hdnId" value="">
+	          </div>
             
             </form>
 
-            
+          	
           </div>
           
         
@@ -143,34 +146,7 @@
         <!-- /.modal-content -->
       </div>
           <!-- /.modal-dialog -->
-</div> 
-
-<div class="modal fade" id="modal-default-delete">
-  <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Delete Image</h4>
-          </div>
-          <div class="modal-body">
-            <span> Do you realy want to delete this image ? </span>
-          </div>
-          
-          <div class="modal-footer">
-            <form action=" {{ route('delete_image') }} " method="post">
-                {{ csrf_field() }}
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-danger  " value="Delete" />
-              <input type="hidden" name="hdnDeleteId" id="hdnDeleteId" value="">
-            </form>
-          </div>
-        
-        </div>
-        <!-- /.modal-content -->
-      </div>
-          <!-- /.modal-dialog -->
-  </div>
+</div>
 <!-- /.modal -->
 
 @endsection
@@ -196,14 +172,14 @@
 <script src="/backend/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="/backend/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <!-- jQuery Knob Chart -->
-<!-- <script src="/backend/bower_components/jquery-knob/dist/jquery.knob.min.js"></script> -->
+<script src="/backend/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-<!-- <script src="/backend/bower_components/moment/min/moment.min.js"></script> -->
-<!-- <script src="/backend/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script> -->
+<script src="/backend/bower_components/moment/min/moment.min.js"></script>
+<script src="/backend/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
-<!-- <script src="/backend/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> -->
+<script src="/backend/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<!-- <script src="/backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script> -->
+<script src="/backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
 <script src="/backend/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -213,22 +189,30 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/backend/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<!-- <script src="/backend/dist/js/demo.js"></script> -->
-<!-- Lazy Loading -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazyloadxt/1.0.0/jquery.lazyloadxt.min.js"></script>
+<script src="/backend/dist/js/demo.js"></script>
 
 <script>
-  $(function ()
-  {
-    $('#modal-default-delete').on('shown.bs.modal', function(e) 
-    {
-      var imageId = $(e.relatedTarget).data('id');
-      $(e.currentTarget).find('#hdnDeleteId').val(imageId);
-      //$(e.currentTarget).find('.modal-body').html('the deleted article id is ' + imageId);
+  $(function () {
 
-    });
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  
 
-  });
+    $('#modal-default').on('shown.bs.modal', function (e) {
+      // var articleId = $(e.relatedTarget).data('id');
+      // $(e.currentTarget).find('#hdnId').val(articleId);
+      //console.log($(e.currentTarget));
+      //$("#modal-default .modal-body").html('the deleted article id is ' + articleId);
+      $(e.currentTarget).find('.modal-body').html('the deleted article id is ' + articleId);
+    })
+  })
 </script>
 
 @endsection

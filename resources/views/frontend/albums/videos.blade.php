@@ -13,8 +13,6 @@
         <!-- Magnific Popup -->
         <link rel="stylesheet" href="/frontend/scripts/magnific-popup/dist/magnific-popup.css">
         <link rel="stylesheet" href="/frontend/scripts/sweetalert/dist/sweetalert.css">
-        <!-- Magnific Popup core CSS file -->
-        <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
         <!-- Custom style -->
         <link rel="stylesheet" href="/frontend/css/style.css">
         <link rel="stylesheet" href="/frontend/css/skins/all.css">
@@ -26,20 +24,40 @@
 <section class="category">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="row">
-                      
-                    @foreach( $photos as $photo )
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <h6 style="max-height: 20px;"> {{ $photo->title }} </h6>
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="row">                                        
+
+                    <h3> Play List </h3>
+                    <div class="gallery-grid">
                     
-                            <figure>  
-                                <a class="test-popup-link" href="/images/albums/{{ $photo->image }}">
-                                <img src="/images/albums/{{ $photo->image }}" style="width: 100%; max-height: 150px;height: 150px">
-                                </a>
-                            </figure>
-                        </div>
-                    @endforeach
+	                    @if(isset($videoList['results']))
+	                        @foreach($videoList['results'] as $item)
+	                            @if(isset($item->snippet->thumbnails))
+
+	                                <div class="col-md-4 gallery-grid">
+	                                    <div class="grid">
+	                
+	                                        <figure class="effect-roxy">
+                                                <a class="popup-youtube" href="http://www.youtube.com/watch?v={{$item->snippet->resourceId->videoId}}">
+	                                            <!-- <a class="example-image-link" href="/album/video/list/{{$item->snippet->playlistId}}/show/{{$item->snippet->resourceId->videoId}}"> -->
+	                                                <img src="{{$item->snippet->thumbnails->medium->url or ''}}">
+	                
+	                                                <figcaption>
+	                                                    <span>{{$item->snippet->title or ''}}</span>
+	                                                </figcaption>   
+	                
+	                                            </a>
+	                                        </figure>
+	                                    </div>
+	                                </div>
+
+	                            @endif
+	                        @endforeach
+	                    @else
+	                        <center>There are no videos yet !!!!</center>
+	                    @endif
+                    
+                    </div>
 
                 </div>
             </div>
@@ -63,18 +81,20 @@
     <script src="/frontend/scripts/toast/jquery.toast.min.js"></script>
     <script src="/frontend/js/demo.js"></script>
     <script src="/frontend/js/e-magz.js"></script>
-    <!-- Magnific Popup core JS file -->
-    <script src="magnific-popup/jquery.magnific-popup.js"></script>
-    
-    <script>
-        $(document).ready(function() {
-        $('.test-popup-link').magnificPopup({
-            type:'image',
-            gallery:{
-                enabled:true
-              }
-        });
-        });
 
+    <script type="text/javascript">
+        
+      $(document).ready(function() {
+        $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+          disableOn: 700,
+          type: 'iframe',
+          mainClass: 'mfp-fade',
+          removalDelay: 160,
+          preloader: false,
+
+          fixedContentPos: false
+        });
+      });
+    
     </script>
 @endsection
