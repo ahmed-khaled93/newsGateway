@@ -88,7 +88,7 @@
                     <a class="btn btn-warning" href="/dashboard/articles/edit/{{ $article->id }}" role="button"> Edit </a>
                   </td>
                   <td>
-                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modal-default" data-id="{{ $article->id }}">Delete Me!!</a>
+                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modal-default" data-id="{{ $article->id }}">Delete</a>
                   </td>
                 
                 </tr>

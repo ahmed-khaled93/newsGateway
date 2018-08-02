@@ -2,6 +2,10 @@
 
 use App\Catg;
 use App\Album;
+use App\Photo;
+use App\Article;
+use App\Urgent;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +20,12 @@ use App\Album;
 
 Route::get('/', function ()
 {
-	
 	$catgs = Catg::catgs();
+	$photos = Photo::orderBy('id', 'desc')->take(8)->get();
+	$articles = Article::orderBy('id', 'desc')->take(4)->get();
+	$urgent = Urgent::latest()->get();
 
-    return view('frontend.index');
-
+    return view('frontend.index', compact('photos', 'articles', 'urgent'));
 });
 
 
@@ -65,6 +70,14 @@ Route::get('/album/channel/list/{id}', 'AlbumController@channelListItems');
 
 Route::prefix('dashboard')->group(function()
 {
+	Route::get('/', function()
+	{
+		$categories = Catg::categories();
+		$albums = Album::albums();
+		
+		return view('backend.index');
+	});
+	
 	Route::get('articles/edit/{article}','ArticleController@editArticle');
 	
 	Route::get('articles/create','ArticleController@create');
@@ -76,6 +89,9 @@ Route::prefix('dashboard')->group(function()
 	Route::get('albums/photos/{albumId}', 'AlbumController@showAlbumPhotos');
 	
 	Route::get('albums/AddImage','AlbumController@AddImage');
+
+	Route::get('urgentnews', 'UrgentController@urgentnews');
+
 
 
 	Route::post('/createArticle','ArticleController@store');
@@ -90,12 +106,11 @@ Route::prefix('dashboard')->group(function()
 
 	Route::post('albums/deleteImage', 'AlbumController@deleteImage')->name('delete_image');
 
-	Route::get('/', function()
-	{
-		$categories = Catg::categories();
-		$albums = Album::albums();
-		
-		return view('backend.index');
-	});
+	Route::post('newUrgentNews', 'UrgentController@newUrgentNews');
+
+	Route::post('urgentnews/delete', 'UrgentController@deleteurgentnews')->name('delete_urgentnews');
+
+	Route::post('updateUrgentNews', 'UrgentController@updateUrgentNews');
+
 
 });

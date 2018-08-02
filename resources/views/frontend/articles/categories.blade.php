@@ -60,8 +60,7 @@
 								</h2>
 								
 									<p class="ArticleBody" style="min-height: 60px;">
-							            {{ str_limit(strip_tags($article->body), 100) }}
-							           
+							            {{ str_limit(strip_tags($article->body), 100) }}   
 							        </p>
 
 								<footer>

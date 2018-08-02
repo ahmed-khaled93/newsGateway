@@ -55,15 +55,11 @@
 						
 						<div class="block-body">
 							<ul class="item-list-round" data-magnific="gallery">
-								<li><a href="/frontend/images/news/img06.jpg" style="background-image: url('/frontend/images/news/img06.jpg');"></a></li>
-								<li><a href="/frontend/images/news/img07.jpg" style="background-image: url('/frontend/images/news/img07.jpg');"></a></li>
-								<li><a href="/frontend/images/news/img08.jpg" style="background-image: url('/frontend/images/news/img08.jpg');"></a></li>
-								<li><a href="/frontend/images/news/img09.jpg" style="background-image: url('/frontend/images/news/img09.jpg');"></a></li>
-								<li><a href="/frontend/images/news/img10.jpg" style="background-image: url('/frontend/images/news/img10.jpg');"></a></li>
-								<li><a href="/frontend/images/news/img11.jpg" style="background-image: url('/frontend/images/news/img11.jpg');"></a></li>
-								<li><a href="/frontend/images/news/img12.jpg" style="background-image: url('/frontend/images/news/img12.jpg');"><div class="more">+2</div></a></li>
-								<li class="hidden"><a href="/frontend/images/news/img13.jpg" style="background-image: url('/frontend/images/news/img13.jpg');"></a></li>
-								<li class="hidden"><a href="/frontend/images/news/img14.jpg" style="background-image: url('/frontend/images/news/img14.jpg');"></a></li>
+								
+								@foreach($photos as $photo)
+									<li><a href="/images/albums/{{ $photo->image }}" style="background-image: url('/images/albums/{{ $photo->image }}');"></a></li>
+								@endforeach
+
 							</ul>
 						</div>
 					

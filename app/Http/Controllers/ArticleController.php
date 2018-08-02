@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\ArticleRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\UrgentRepository;
 use App\Http\Requests\Backend\Articles\StoreAndUpdateArticleRequest;
+use App\Http\Requests\Backend\UrgentNews\urgentNewsRequest;
 use App\Article;
 use App\Catg;
 
@@ -14,11 +16,13 @@ class ArticleController extends Controller
 
 	protected $articleRepository;
 	protected $categoryRepository;
+	
 
-	public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository)
+	public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, UrgentRepository $urgentRepository)
     {
         $this->articleRepository = $articleRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->urgentRepository = $urgentRepository;
     }
 
 // ============================ Front End ====================================	
@@ -86,5 +90,9 @@ class ArticleController extends Controller
 		return back();
 	}
 	
+//=========================
+
+	
+
 	//End BackEnd actions
 }
