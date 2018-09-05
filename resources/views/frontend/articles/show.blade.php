@@ -27,10 +27,13 @@
                         <!-- <div class="col-md-6 col-sm-6 col-xs-12"> -->
                                 <div class="row" style="text-align: center; margin-left: 200px; margin-right: 200px;">
 
-                                       <h3 style="padding-top: 30px;"> {{ $article->title }} </h3>
-                                       <br>
-                                       <img src="/images/articles/{{ $article->image }}" style="width: 100%; padding-right: 50px; padding-left: 50px;">
-                                       <br><br>
+                                        <h3 style="padding-top: 30px;"> {{ $article->title }} </h3>
+                                        <br>
+                                        <a class="test-popup-link" href="/images/articles/{{ $article->image }}">
+                                            <img src="/images/articles/{{ $article->image }}" style="width: 100%; padding-right: 50px; padding-left: 50px;">
+                                        </a>
+
+                                        <br><br>
 
                                         {{ $article->body }}
                                 
@@ -56,4 +59,12 @@
     <script src="/frontend/scripts/toast/jquery.toast.min.js"></script>
     <script src="/frontend/js/demo.js"></script>
     <script src="/frontend/js/e-magz.js"></script>
+    <script>
+        $(document).ready(function() {
+        $('.test-popup-link').magnificPopup({
+            type:'image'
+        });
+        });
+
+    </script>
 @endsection

@@ -24,7 +24,7 @@
         <li class="{{ in_array('articles', (isset($menuArticles) ? $menuArticles : [])) ? 'active' : ''}} treeview">
           
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Articles</span>
+            <i class="fa fa-files-o"></i> <span>Articles</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -79,15 +79,23 @@
         </li>
                           <!-- End Multimedia -->
 
-                      <!-- Urgent News -->
-
+                <!-- Urgent News -->
         <li>
           <a href="/dashboard/urgentnews">
             <i class="fa fa-laptop"></i>
             <span>Urgent News</span>
           </a>
         </li>
-                      <!-- End Urgent News -->
+                <!-- End Urgent News -->
+
+                <!-- Event History -->
+        <li>
+          <a href="/dashboard/eventsHistory">
+            <i class="fa fa-book"></i>
+            <span>Events History</span>
+          </a>
+        </li>
+                <!-- End Event History -->
 
         <li class="treeview">
           

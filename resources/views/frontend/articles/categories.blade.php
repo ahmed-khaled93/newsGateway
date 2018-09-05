@@ -30,8 +30,6 @@
 					<article class="article col-md-6 col-sm-6 col-xs-12">
 						<div class="inner">
 							
-							
-
 							<figure>
 								<a href="/articles/{{ $article->id }}">
 									<img src="/images/articles/{{ $article->image }}" alt="Sample Article">
@@ -39,16 +37,15 @@
 							</figure>
 							
 							<div class="padding">
-								
-								
-
+																
 								<div class="detail">
 									<div class="time"> 
 										{{ $article->created_at->toFormattedDateString() }} 
 									</div>
-									<div class="category"><a href="#">Healthy</a></div>
+									<div class="category"><a href="/categories/{{ $article->catgs->title }}">
+									{{$article->catgs->title}}
+									</a></div>
 								</div>
-								
 								
 
 								<h2 style="min-height: 60px;">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Articles;
+namespace App\Http\Requests\Backend\UrgentNews;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * Class StoreUserRequest.
  */
-class StoreAndUpdateArticleRequest extends FormRequest
+class updateUrgentNewsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,11 +29,7 @@ class StoreAndUpdateArticleRequest extends FormRequest
     {
         return [        
 
-            'catg_id'   =>  'required',
-            'title'     =>  'required|min:3|max:191',
-            'body'      =>  'required',
-            // 'image'     =>  'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-
+            'news'  =>  'required|min:3|max:191'            
         ];
 
     }

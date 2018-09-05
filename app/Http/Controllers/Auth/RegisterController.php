@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Mail\VerifyMail;
 use App\VerifyUser;
 
@@ -31,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -72,6 +73,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        // $role_user  =  Role::where('name','User')->first();
+        // $user->roles()->attach($role_user);
+        $user->roles()->attach(Role::where('name', 'Author')->first());
+
  
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,

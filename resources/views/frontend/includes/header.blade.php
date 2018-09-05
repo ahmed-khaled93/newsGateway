@@ -36,7 +36,7 @@
 							
 								<!-- Authentication Links -->
 
-								@guest
+							@guest
 
 								<li><a href="{{ route('register') }}"><i class="ion-person-add"></i><div>{{ __('Register') }}</div></a></li>
 								<li><a href="{{ route('login') }}"><i class="ion-person"></i><div>{{ __('Login') }}</div></a></li>

@@ -53,10 +53,10 @@ class ArticleRepository
 	}
 
 
-	public function updateArticle($articleId, StoreAndUpdateArticleRequest $request)
+	public function updateArticle(StoreAndUpdateArticleRequest $request)
 	{
 
-		$article = Article::find($articleId);
+		$article = Article::find($request->hdnEditId);
 
 		$article->update(request(['title','body','catg_id']));
 
@@ -89,10 +89,16 @@ class ArticleRepository
 	    	unlink($image_path);
 	    }
 		
-		$delete->delete();	
+		$delete->delete();
 	}
 
 // ------------------------------------------------------------------
 	
+
+	// public function lastTenArticles()
+	// {
+	// 	$articles = Article::orderBy('id', 'desc')->take(10)->get();
+	// 	return $articles;
+	// }
 
 }

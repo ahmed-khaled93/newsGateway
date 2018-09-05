@@ -24,7 +24,7 @@ class CategoryRepository
 
 // ------------------------------ Back End --------------------------
 
-	public function getCreateArticlePage()
+	public function getAllCategories()
 	{
 		$catgs = Catg::all();
 		return $catgs;

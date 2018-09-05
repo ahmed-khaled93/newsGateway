@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Alaouy\Youtube\YoutubeServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
         /*
          * Package Service Providers...
