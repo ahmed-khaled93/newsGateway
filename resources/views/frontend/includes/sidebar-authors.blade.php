@@ -24,14 +24,16 @@
 					<div class="featured-author-count">
 						<div class="item">
 							<a href="#">
-								<div class="name">Posts</div>
+								<div class="name"> @lang('lables.posts') </div>
 								<div class="value">208</div>														
 							</a>
 						</div>
 						
 						<div class="item">
 							<a href="#">
-								<div class="name">Stars</div>
+													
+								<div class="name"> 	@lang('lables.rate') </div>
+													@lang('lables.posts')
 								<div class="value">3,729</div>														
 							</a>
 						</div>
@@ -51,7 +53,7 @@
 					</div>
 					
 					<div class="block">
-						<h2 class="block-title">Photos</h2>
+						<h2 class="block-title">@lang('lables.latest-photos')</h2>
 						
 						<div class="block-body">
 							<ul class="item-list-round" data-magnific="gallery">

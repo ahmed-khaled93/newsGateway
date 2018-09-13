@@ -1,4 +1,4 @@
-<div class="col-md-6 col-sm-6">
+<!-- <div class="col-md-6 col-sm-6">
 								<h1 class="title-col">
 									Hot News
 									<div class="carousel-nav" id="hot-news-nav">
@@ -108,4 +108,4 @@
 										</div>
 									</article>
 								</div>
-							</div>
+							</div> -->

@@ -15,8 +15,6 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('body');
             $table->integer('catg_id');
             $table->string('image');
             $table->timestamps();
@@ -32,4 +30,5 @@ class CreateArticlesTable extends Migration
     {
         Schema::dropIfExists('articles');
     }
+    
 }

@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="line top">
 	<div>Just Another News</div>
 </div>
@@ -156,4 +156,4 @@
 			</div>
 		</article>
 </div>
-						
+						 -->

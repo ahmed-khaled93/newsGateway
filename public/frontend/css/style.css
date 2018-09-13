@@ -3162,7 +3162,7 @@ footer.footer .tags li a:hover {
 }
 footer.footer .copyright {
   text-align: center;
-  margin-top: 70px;
+  margin-top: 0px !important;
   color: #848f9a;
   border-top: 1px solid #222;
   padding-top: 35px;

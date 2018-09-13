@@ -26,6 +26,7 @@
 		<div class="row">
   			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="row">
+					
 					@foreach($articles as $article)
 					<article class="article col-md-6 col-sm-6 col-xs-12">
 						<div class="inner">
@@ -51,7 +52,7 @@
 								<h2 style="min-height: 60px;">
 									<a href="/articles/{{ $article->id }}">
 								 
-								 	{{ $article->title }}
+								 	{{ $article->translate()->title }}
 
 									</a>
 								</h2>

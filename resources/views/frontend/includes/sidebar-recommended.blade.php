@@ -1,4 +1,4 @@
-<aside>
+<!-- <aside>
 	<ul class="nav nav-tabs nav-justified" role="tablist">
 		<li class="active">
 			<a href="#recomended" aria-controls="recomended" role="tab" data-toggle="tab">
@@ -131,4 +131,4 @@
 		</div>
 	</div>
 
-</aside>
+</aside> -->

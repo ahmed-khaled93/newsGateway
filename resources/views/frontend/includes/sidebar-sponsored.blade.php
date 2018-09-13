@@ -1,4 +1,4 @@
-<aside id="sponsored">
+<!-- <aside id="sponsored">
 	<h1 class="aside-title">Sponsored</h1>
 	<div class="aside-body">
 		
@@ -30,4 +30,4 @@
 	
 	</div>
 
-</aside>
+</aside> -->

@@ -215,6 +215,8 @@ $(function(){
 	  var headlineCarousel = $("#headline").owlCarousel({
 	  	items: 1,
 	  	dots: false,
+	  	nav: true,
+	  	dots: true,
 	  	// autoplay: true,
 	  	autoplayTimeout: 3000,
 	  	loop: true

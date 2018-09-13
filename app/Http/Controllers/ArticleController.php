@@ -66,11 +66,11 @@ class ArticleController extends Controller
 
 	public function store(StoreAndUpdateArticleRequest $request)
 	{
-		
+
 		$article = $this->articleRepository->storeArticle($request);
 		// dd($article);
 		// \Event::fire('App\Events\CreateArticle', ['name'=>"new Event"]);
-		event(new \App\Events\CreateArticle(['message']));
+		event(new \App\Events\ArticleEvents(['CreateArticle']));
 		return redirect('/dashboard/articles/'.$request->catg_id);
 	}
 
@@ -87,14 +87,15 @@ class ArticleController extends Controller
 	public function updateArticle(StoreAndUpdateArticleRequest $request)
 	{
 		$article = $this->articleRepository->updateArticle($request);
-		session()->flash('message', 'Article Updated Successfully');
+		event(new \App\Events\ArticleEvents(['UpdateArticle']));
 		return redirect('/dashboard/articles/'.$request->catg_id);
 	}
 
 
 	public function deleteArticle(Request $request)
 	{
-		$delete = $this->articleRepository->deleteArticle($request);		
+		$delete = $this->articleRepository->deleteArticle($request);
+		event(new \App\Events\ArticleEvents(['DeleteArticle']));		
 		return back();
 	}
 	

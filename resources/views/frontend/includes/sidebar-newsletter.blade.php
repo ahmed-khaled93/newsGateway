@@ -1,4 +1,4 @@
-<aside>
+<!-- <aside>
 	<div class="aside-body">
 		<form class="newsletter">
 								
@@ -20,4 +20,4 @@
 		
 		</form>
 	</div>
-</aside>
+</aside> -->

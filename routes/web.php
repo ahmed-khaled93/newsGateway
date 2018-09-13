@@ -18,26 +18,28 @@ use Carbon\Carbon;
 |
 */
 
-// Route::get('/', function ()
-// {
-// 	$catgs = Catg::catgs();
-// 	$photos = Photo::orderBy('id', 'desc')->take(8)->get();
-// 	$articles = Article::orderBy('id', 'desc')->take(4)->get();
-// 	$urgent = Urgent::latest()->get();
-
-//     return view('frontend.index', compact('photos', 'articles', 'urgent'));
-// });
-
 
 Auth::routes();
-
 Route::get('/', 'HomeController@index')->name('home');
+
+// Route::get('/{locale}', 'HomeController@localization');
+
+Route::get('locale/{locale}', function ($locale) {
+    \Session::put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::group(['middleware'=>'localization'], function()
+{
+	Route::get('/', 'HomeController@index');
+	
+	Route::get('/categories/{catName}','ArticleController@articles');
+});
 
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 Route::get('/articles/{article}','ArticleController@show');
 
-Route::get('/categories/{catName}','ArticleController@articles');
 
 // ------------------------------- Photos ------------------------------------------
 
@@ -83,22 +85,6 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function()
 		'middleware'	=>	'roles',
 		'roles'			=>	['Author','Admin']
 	]);
-	
-	// Route::get('articles/create',[
-	// 	'uses'			=>	'ArticleController@create',
-	// 	'as'			=>	'backend.articles.create',
-	// 	'middleware'	=>	'roles',
-	// 	'roles'			=>	['Author','Admin']
-	// // 'ArticleController@create'
-	// ]);
-	
-	// Route::get('articles/edit/{article}',[
-	// 	'uses'			=>	'ArticleController@editArticle',
-	// 	'as'			=>	'backend.articles.edit',
-	// 	'middleware'	=>	'roles',
-	// 	'roles'			=>	['Author','Admin']
-	// 	// 'ArticleController@editArticle'
-	// ]);
 	
 	Route::get('multimedia/albums',[
 		'uses'			=>	'AlbumController@photoAlbums',

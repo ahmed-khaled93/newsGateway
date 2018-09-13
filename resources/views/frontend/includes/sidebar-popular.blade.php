@@ -1,4 +1,4 @@
-<aside>
+<!-- <aside>
 	<h1 class="aside-title">Popular 
 		<a href="#" class="all">See All 
 			<i class="ion-ios-arrow-right"></i>
@@ -86,4 +86,4 @@
 		</article>
 	
 	</div>
-</aside>
+</aside> -->

@@ -8,6 +8,7 @@ use App\Album;
 use App\Photo;
 use App\Article;
 use App\Urgent;
+use App;
 
 class HomeController extends Controller
 {
@@ -26,16 +27,48 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
-        // dd($request->user()->authorizeRoles(['User', 'Admin']));
-            $catgs = Catg::catgs();
-            $photos = Photo::orderBy('id', 'desc')->take(8)->get();
-            $articles = Article::orderBy('id', 'desc')->take(4)->get();
-            $urgent = Urgent::latest()->get();
-            
-            return view('frontend.index', compact('photos', 'articles', 'urgent'));
+        $catgs = Catg::catgs();
+        $photos = Photo::orderBy('id', 'desc')->take(8)->get();
+        $articles = Article::orderBy('id', 'desc')->take(5)->get();
+        $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
+        $urgent = Urgent::latest()->get();
+        
+        return view('frontend.index', compact('photos', 'articles', 'urgent', 'hotnews','locale'));       
     }
+
+
+    // public function localization(Request $request, $locale)
+    // {
+
+    //     // App::setLocale($locale);
+    //     // $locale = App::getLocale();
+
+    //     // if (App::isLocale('en')) 
+    //     // { 
+    //     \Session::put('locale', $locale);
+    //         $catgs = Catg::catgs();
+    //         $photos = Photo::orderBy('id', 'desc')->take(8)->get();
+    //         $articles = Article::orderBy('id', 'desc')->take(5)->get();
+    //         $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
+    //         $urgent = Urgent::latest()->get();
+            
+    //         return view('frontend.index', compact('photos', 'articles', 'urgent', 'hotnews','locale'));
+        
+    //     // }elseif (App::isLocale('ar')) 
+    //     // {
+    //     //     $catgs = Catg::catgs();
+    //     //     $photos = Photo::orderBy('id', 'desc')->take(8)->get();
+    //     //     $articles = Article::orderBy('id', 'desc')->take(5)->get();
+    //     //     $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
+    //     //     $urgent = Urgent::latest()->get();
+            
+    //     //     return view('frontend.index', compact('photos', 'articles', 'urgent', 'hotnews','locale'));
+    //     // }
+            
+    // }
 
 
     public function dashboard(Request $request)

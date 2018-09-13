@@ -48,8 +48,16 @@
 
 </section>
 
-@if($flash = session('message'))
+@if($flash = session('CreateArticle'))
   <div class="alert alert-success" role="alert">
+    {{ $flash }}
+  </div>
+@elseif($flash = session('UpdateArticle'))
+  <div class="alert alert-warning" role="alert">
+    {{ $flash }}
+  </div>
+@elseif($flash = session('DeleteArticle'))
+  <div class="alert alert-danger" role="alert">
     {{ $flash }}
   </div>
 @endif

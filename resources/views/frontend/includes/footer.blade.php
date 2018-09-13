@@ -1,7 +1,7 @@
 <footer class="footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12">
 						<div class="block">
 							<h1 class="block-title">Company Info</h1>
 							<div class="block-body">
@@ -9,14 +9,14 @@
 									<img src="/frontend/images/logo-light.png" class="img-responsive" alt="Logo">
 								</figure>
 								<p class="brand-description">
-									Magz is a HTML5 &amp; CSS3 magazine template based on Bootstrap 3.
+									Magz is a HTML5 &amp; CSS3 magazine template <br> based on Bootstrap 3.
 								</p>
 								<a href="page.html" class="btn btn-magz white">About Us <i class="ion-ios-arrow-thin-right"></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="block">
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<!-- <div class="block">
 							<h1 class="block-title">Popular Tags <div class="right"><a href="#">See All <i class="ion-ios-arrow-thin-right"></i></a></div></h1>
 							<div class="block-body">
 								<ul class="tags">
@@ -30,7 +30,7 @@
 								</ul>
 							</div>
 						</div>
-						<div class="line"></div>
+						<div class="line"></disv> --> 
 						<div class="block">
 							<h1 class="block-title">Newsletter</h1>
 							<div class="block-body">
@@ -46,8 +46,21 @@
 								</form>
 							</div>
 						</div>
+						<div class="line"></div>
+						<div class="col-md-12">
+						<div class="block">
+							<div class="block-body no-margin">
+								<ul class="footer-nav-horizontal">
+									<li><a href="/">Home</a></li>
+									<li><a href="#">Partner</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="page.html">About</a></li>
+								</ul>
+							</div>
+						</div>
+						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
+					<!-- <div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="block">
 							<h1 class="block-title">Latest News</h1>
 							<div class="block-body">
@@ -102,8 +115,8 @@
 								<a href="#" class="btn btn-magz white btn-block">See All <i class="ion-ios-arrow-thin-right"></i></a>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-3 col-xs-12 col-sm-6">
+					</div> -->
+					<div class="col-md-4 col-xs-12 col-sm-6">
 						<div class="block">
 							<h1 class="block-title">Follow Us</h1>
 							<div class="block-body">
@@ -139,6 +152,7 @@
 											<i class="ion-social-instagram-outline"></i>
 										</a>
 									</li>
+									<br>
 									<li>
 										<a href="#" class="tumblr">
 											<svg><rect width="0" height="0"/></svg>
@@ -172,25 +186,15 @@
 								</ul>
 							</div>
 						</div>
-						<div class="line"></div>
-						<div class="block">
-							<div class="block-body no-margin">
-								<ul class="footer-nav-horizontal">
-									<li><a href="index.html">Home</a></li>
-									<li><a href="#">Partner</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="page.html">About</a></li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="copyright">
-							COPYRIGHT &copy; MAGZ 2017. ALL RIGHT RESERVED.
+							COPYRIGHT &copy; Entlaqa 2018. ALL RIGHT RESERVED.
 							<div>
-								Made with <i class="ion-heart"></i> by <a href="http://kodinger.com">Kodinger</a>
+								Made with <i class="ion-heart"></i> by <a href="http://kodinger.com">Ahmed Khaled</a>
 							</div>
 						</div>
 					</div>

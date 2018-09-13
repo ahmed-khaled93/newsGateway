@@ -1,4 +1,4 @@
-<section class="best-of-the-week">
+<!-- <section class="best-of-the-week">
 
 	<div class="container">
 		
@@ -127,4 +127,4 @@
 		</div>
 	</div>
 
-</section>
+</section> -->

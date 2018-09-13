@@ -1,4 +1,4 @@
-<aside>
+<!-- <aside>
 	<h1 class="aside-title">Videos
 		<div class="carousel-nav" id="video-list-nav">
 			<div class="prev"><i class="ion-ios-arrow-left"></i></div>
@@ -14,4 +14,4 @@
 		</ul>
 	</div>
 
-</aside>
+</aside> -->

@@ -1,13 +1,13 @@
 
 <div class="line">
-	<div>Latest News</div>
+	<div>@lang('lables.latest-news')</div>
 </div>
 	
 
 <div class="row">
 	<div class="col-md-12 col-sm-6 col-xs-12">
 		<div class="row">	
-			@foreach($articles as $article)
+			@foreach($hotnews as $article)
 				<article class="article col-md-6">
 					<div class="inner">
 						<figure>
@@ -38,7 +38,7 @@
 							<footer>
 								<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
 								<a class="btn btn-primary more" href="{{ action('ArticleController@show', $article) }}">
-									<div>More</div>
+									<div>@lang('lables.latest-news-More')</div>
 									<div><i class="ion-ios-arrow-thin-right"></i></div>
 								</a>
 							</footer>

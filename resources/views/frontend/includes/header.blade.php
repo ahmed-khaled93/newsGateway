@@ -89,7 +89,7 @@
 							@if (Route::has('login'))
 				                
 				                @auth
-			                       	<a href="{{ url('/') }}">Home</a>
+			                       	<!-- <a href="{{ url('/') }}">Home</a> -->
 				                @else
 								   <li class="for-tablet"><a href="{{ route('login') }}">Login</a></li>
 								   <li class="for-tablet"><a href="{{ route('register') }}">Register</a></li>
@@ -98,71 +98,20 @@
 				            @endif	
 							
 
-							<li><a href="category.html">Standard</a></li>
+							<li><a href="/">Home</a></li>
 							<li class="dropdown magz-dropdown">
-								<a href="category.html">Pages <i class="ion-ios-arrow-right"></i></a>
+								<a href="#"> Articals <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
-									<li><a href="/">Home</a></li>
-									
-									
+						
+								<!-- Articals Category -->
+									@foreach($catgs as $catg)
 
-									<!-- authentication -->
-									<li class="dropdown magz-dropdown">
-										<a href="#">Authentication <i class="ion-ios-arrow-right"></i></a>
-										<ul class="dropdown-menu">
-											<!-- Authentication Links -->
+										<li><a href="/categories/{{ $catg->title }}">{{ $catg->title }}</a></li>
 
-										@guest
+									@endforeach
+								<!-- Articals Category -->
 
-											<li><a href="{{ route('register') }}"><i class="ion-person-add"></i><div>{{ __('Register') }}</div></a></li>
 
-											<li><a href="{{ route('login') }}"><i class="ion-person"></i><div>{{ __('Login') }}</div></a></li>
-											
-			                    	    @endguest
-													<li><a href="forgot.html">Forgot Password</a></li>
-													<li><a href="reset.html">Reset Password</a></li>
-										</ul>
-									</li>
-									<!-- end auth -->
-
-									<!-- Articals Category -->
-
-									<li>
-										<a href="#">Articals Category 
-											<i class="ion-ios-arrow-right"></i>
-										</a>
-										
-										
-										<ul class="dropdown-menu">
-											
-											@foreach($catgs as $catg)
-
-											<li><a href="/categories/{{ $catg->title }}">{{ $catg->title }}</a></li>
-
-											@endforeach
-											
-										</ul>
-
-										
-									</li>
-
-									<!-- End Articals Category -->
-
-									<li><a href="single.html">Single</a></li>
-									<li><a href="page.html">Page</a></li>
-									<li><a href="/search">Search</a></li>
-									<li><a href="/contact">Contact</a></li>
-									
-									<li class="dropdown magz-dropdown">
-										<a href="#">Error <i class="ion-ios-arrow-right"></i></a>
-										<ul class="dropdown-menu">
-											<li><a href="403.html">403</a></li>
-											<li><a href="404.html">404</a></li>
-											<li><a href="500.html">500</a></li>
-											<li><a href="503.html">503</a></li>
-										</ul>
-									</li>
-								
 								</ul>
 							</li>
 							
@@ -196,12 +145,23 @@
 									
 									</li>
 									<!-- End Multimedia Videos -->
-	
+
 								</ul>
 							</li>
 									<!-- End Multimedia Category -->
 							
-							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Mega Menu <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
+							<li class="dropdown magz-dropdown"><a href="#"> Language <i class="
+								ion-ios-arrow-right"></i></a>
+								
+								<ul class="dropdown-menu">
+									
+								<li><a href="locale/en">En</a></li>
+								<li><a href="locale/ar">Ar</a></li>
+
+								</ul>
+							</li>
+							
+<!-- 							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Mega Menu <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
 										<div class="row">
@@ -340,7 +300,7 @@
 									<li class="divider"></li>
 									<li><a href="#"><i class="icon ion-log-out"></i> Logout</a></li>
 								</ul>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</div>
