@@ -9,7 +9,7 @@ use App\Repositories\UrgentRepository;
 use App\Http\Requests\Backend\Articles\StoreAndUpdateArticleRequest;
 use App\Http\Requests\Backend\UrgentNews\urgentNewsRequest;
 use App\Article;
-use App\Catg;
+use App\Category;
 use App\Events\CreateArticle;
 
 class ArticleController extends Controller
@@ -50,7 +50,7 @@ class ArticleController extends Controller
 	{
 		$articles = $this->articleRepository->getArticleById($id);
 		$catgs = $this->categoryRepository->getAllCategories();
-		$menuArticles = ['articles', 'catg_id'];
+		$menuArticles = ['articles', 'category_id'];
 
 		return view('backend.articles.articles',compact('articles', 'menuArticles', 'catgs') );
 		return session('message');
@@ -71,7 +71,7 @@ class ArticleController extends Controller
 		// dd($article);
 		// \Event::fire('App\Events\CreateArticle', ['name'=>"new Event"]);
 		event(new \App\Events\ArticleEvents(['CreateArticle']));
-		return redirect('/dashboard/articles/'.$request->catg_id);
+		return redirect('/dashboard/articles/'.$request->category_id);
 	}
 
 
@@ -88,7 +88,7 @@ class ArticleController extends Controller
 	{
 		$article = $this->articleRepository->updateArticle($request);
 		event(new \App\Events\ArticleEvents(['UpdateArticle']));
-		return redirect('/dashboard/articles/'.$request->catg_id);
+		return redirect('/dashboard/articles/'.$request->category_id);
 	}
 
 

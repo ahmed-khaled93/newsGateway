@@ -39,12 +39,12 @@
                 <div class="box-wrapper">               
                     <div class="box box-border">
                         <div class="box-body">
-                            <h4>{{ __('Login') }}</h4>
+                            <h4>@lang('lables.login')</h4>
                             <form method="Post" action="{{ route('login') }}">
                                 {{ csrf_field() }}
                                 
                                 <div class="form-group">
-                                    <label for="email">{{ __('E-Mail Address') }}</label>
+                                    <label for="email">@lang('lables.email')</label>
                                     <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" required>
 
                                     @if ($errors->has('email'))
@@ -56,7 +56,7 @@
                                 
 
                                 <div class="form-group">
-                                    <label class="fw">{{ __('Password') }}</label>
+                                    <label class="fw">@lang('lables.password')</label>
                                     <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required>
 
                                     @if ($errors->has('password'))
@@ -70,30 +70,30 @@
                                     <div class="col-md-64 col-md-offset-0">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> @lang('lables.remember-me')
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    <button type="submit" class="btn btn-primary btn-block">@lang('lables.login')</button>
                                 </div>
 
                                 <div class="form-group text-center">
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        Forgot Your Password?
+                                        @lang('lables.forgot-password')
                                     </a>
                                 </div>
 
                                 <div class="form-group text-center">
-                                     <span class="text-muted">Don't have an account?</span> <a href="/register">Create one</a>
+                                     <span class="text-muted">@lang('lables.not-have-account')</span> <a href="/register">@lang('lables.register')</a>
                                 </div>
                                 
                                 <div class="title-line">
                                     or
                                 </div>
-                <a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
+                <a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> @lang('lables.facebook-login')</a>
                             </form>
                         </div>
                     </div>

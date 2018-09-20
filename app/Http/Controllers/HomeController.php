@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Catg;
+use App\Category;
 use App\Album;
 use App\Photo;
 use App\Article;
@@ -30,9 +30,12 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $catgs = Catg::catgs();
+        $catgs = Category::all();
+        // $translate = Article::translated()->get();
+        // dd($translate);
         $photos = Photo::orderBy('id', 'desc')->take(8)->get();
         $articles = Article::orderBy('id', 'desc')->take(5)->get();
+        dd($articles);
         $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
         $urgent = Urgent::latest()->get();
         
@@ -49,7 +52,7 @@ class HomeController extends Controller
     //     // if (App::isLocale('en')) 
     //     // { 
     //     \Session::put('locale', $locale);
-    //         $catgs = Catg::catgs();
+    //         $catgs = Category::catgs();
     //         $photos = Photo::orderBy('id', 'desc')->take(8)->get();
     //         $articles = Article::orderBy('id', 'desc')->take(5)->get();
     //         $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
@@ -59,7 +62,7 @@ class HomeController extends Controller
         
     //     // }elseif (App::isLocale('ar')) 
     //     // {
-    //     //     $catgs = Catg::catgs();
+    //     //     $catgs = Category::catgs();
     //     //     $photos = Photo::orderBy('id', 'desc')->take(8)->get();
     //     //     $articles = Article::orderBy('id', 'desc')->take(5)->get();
     //     //     $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
@@ -76,7 +79,7 @@ class HomeController extends Controller
         // dd('hjgkgdasfhia');
         if($request->user()->authorizeRoles(['Admin','Author']))
         {
-            $categories = Catg::categories();
+            $categories = Category::categories();
             $albums = Album::albums();
             return view('backend.index');
         }

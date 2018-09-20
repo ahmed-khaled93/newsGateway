@@ -52,7 +52,7 @@
 								<h2 style="min-height: 60px;">
 									<a href="/articles/{{ $article->id }}">
 								 
-								 	{{ $article->translate()->title }}
+								 	{{ $article->title }}
 
 									</a>
 								</h2>

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Articles\StoreAndUpdateArticleRequest;
 use App\Article;
-use App\Catg;
+use App\Category;
 
 
 class ArticleRepository
@@ -25,7 +25,7 @@ class ArticleRepository
 
 	public function getArticleById($id)
 	{
-		$articles = Article::where('catg_id','=', $id)->get();
+		$articles = Article::where('category_id','=', $id)->get();
 		return $articles;
 	}
 
@@ -40,7 +40,7 @@ class ArticleRepository
 	public function storeArticle(StoreAndUpdateArticleRequest $request)
 	{
 		
-    	$article = new Article(request(['title','body','catg_id']));
+    	$article = new Article(request(['title','body','category_id']));
 
 		$image = request('image');
 		
@@ -58,7 +58,7 @@ class ArticleRepository
 
 		$article = Article::find($request->hdnEditId);
 
-		$article->update(request(['title','body','catg_id']));
+		$article->update(request(['title','body','category_id']));
 
 		if (request('image')) {
 			

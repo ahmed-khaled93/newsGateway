@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Articles\StoreAndUpdateArticleRequest;
 use App\Http\Requests\Backend\Articles\storeApiRequest;
 use App\Article;
-use App\Catg;
+use App\Category;
 
 
 class ApiRepository
@@ -22,7 +22,7 @@ class ApiRepository
 	public function storeArticle(storeApiRequest $request)
 	{
 		
-    	$article = new Article(request(['title','body','catg_id']));
+    	$article = new Article(request(['title','body','category_id']));
 
 		$image = request('image');
 		// $image = base64_encode(file_get_contents($request->file('image')->pat‌​h())); 
@@ -49,7 +49,7 @@ class ApiRepository
 		
     	$article = Article::find($id);
 
-    	$article->update(request(['title','body','catg_id']));
+    	$article->update(request(['title','body','category_id']));
 
     	if (request('image')) {
 			

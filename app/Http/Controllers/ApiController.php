@@ -12,7 +12,7 @@ use App\Http\Requests\Backend\Articles\StoreAndUpdateArticleRequest;
 use App\Http\Requests\Backend\Articles\storeApiRequest;
 use App\Http\Requests\Backend\UrgentNews\urgentNewsRequest;
 use App\Article;
-use App\Catg;
+use App\Category;
 use App\Photo;
 
 class ApiController extends Controller

@@ -12,11 +12,7 @@ return [
     */
     'locales' => [
         'en',
-        'ar',
-        'es' => [
-            'MX', // mexican spanish
-            'CO', // colombian spanish
-        ],
+        'ar'
     ],
 
     /*
@@ -41,7 +37,7 @@ return [
     | you can specify what default should be used here.
     |
     */
-    'locale' => 'en',
+    'locale' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +50,7 @@ return [
     | $useTranslationFallback when defined
     |
     */
-    'use_fallback' => 'en',
+    'use_fallback' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -79,6 +75,19 @@ return [
     |
     */
     'fallback_locale' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Translation Model Namespace
+    |--------------------------------------------------------------------------
+    |
+    | Defines the default 'Translation' class namespace. For example, if
+    | you want to use App\Translations\CountryTranslation instead of App\CountryTranslation
+    | set this to 'App\Translations'.
+    |
+    */
+    'translation_model_namespace' => null,
+
 
     /*
     |--------------------------------------------------------------------------

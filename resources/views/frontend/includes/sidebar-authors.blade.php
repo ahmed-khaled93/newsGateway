@@ -41,7 +41,7 @@
 						<div class="item">
 							<a href="#">
 								<div class="icon">
-									<div>More</div>
+									<div>@lang('lables.latest-news-More')</div>
 									<i class="ion-chevron-right"></i>
 								</div>														
 							</a>

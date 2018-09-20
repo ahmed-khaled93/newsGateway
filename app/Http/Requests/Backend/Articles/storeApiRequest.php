@@ -29,7 +29,7 @@ class storeApiRequest extends FormRequest
     {
         return [        
 
-            'catg_id'   =>  'required',
+            'category_id'   =>  'required',
             'title'     =>  'required|min:3|max:191',
             'body'      =>  'required',
             'image'     =>  'required'

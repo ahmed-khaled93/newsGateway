@@ -1,6 +1,6 @@
 <?php
 
-use App\Catg;
+use App\Category;
 use App\Album;
 use App\Photo;
 use App\Article;
@@ -20,53 +20,53 @@ use Carbon\Carbon;
 
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 
 // Route::get('/{locale}', 'HomeController@localization');
 
-Route::get('locale/{locale}', function ($locale) {
+Route::get('/locale/{locale}', function ($locale) {
     \Session::put('locale', $locale);
     return redirect()->back();
-});
+})->name('locale');
 
 Route::group(['middleware'=>'localization'], function()
 {
 	Route::get('/', 'HomeController@index');
 	
 	Route::get('/categories/{catName}','ArticleController@articles');
-});
+	
+	Route::get('/articles/{article}','ArticleController@show');
 
-Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
-
-Route::get('/articles/{article}','ArticleController@show');
+	Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 
 // ------------------------------- Photos ------------------------------------------
 
-Route::get('/albums/albums', 'AlbumController@albums');
+	Route::get('/albums/albums', 'AlbumController@albums');
 
-Route::get('/albums/view/{albumId}', 'AlbumController@viewAlbums');
+	Route::get('/albums/view/{albumId}', 'AlbumController@viewAlbums');
 
-Route::get('/albums/photos', 'AlbumController@photos');
+	Route::get('/albums/photos', 'AlbumController@photos');
 
 // ------------------------------- play lists ---------------------------------------
 
-Route::get('/albums/videoLists', 'AlbumController@videoLists');
+	Route::get('/albums/videoLists', 'AlbumController@videoLists');
 
-Route::get('/albums/videos', 'AlbumController@videos');
+	Route::get('/albums/videos', 'AlbumController@videos');
 
-Route::get('/album/video/list/{listId}/show/{videoId}', 'AlbumController@showVideo');
+	Route::get('/album/video/list/{listId}/show/{videoId}', 'AlbumController@showVideo');
 
 // --------------------------------- Channels ----------------------------------------
 
-Route::get('/albums/channelLists', 'AlbumController@channels');
+	Route::get('/albums/channelLists', 'AlbumController@channels');
 
-Route::get('/albums/channel/listVideos', 'AlbumController@channelLists');
+	Route::get('/albums/channel/listVideos', 'AlbumController@channelLists');
 
-Route::get('/album/channel/list/{id}', 'AlbumController@channelListItems');
+	Route::get('/album/channel/list/{id}', 'AlbumController@channelListItems');
 
 // Route::get('/album/video/list/{channelId}/show/{videoId}', 'AlbumController@showVideo');
 
+});
 
 // ================================ Back End =======================================
 

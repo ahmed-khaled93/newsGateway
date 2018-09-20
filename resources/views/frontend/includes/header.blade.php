@@ -13,13 +13,13 @@
 							<form class="search" autocomplete="off">
 								<div class="form-group">
 									<div class="input-group">
-										<input type="text" name="q" class="form-control" placeholder="Type something here">									
+										<input type="text" name="q" class="form-control" placeholder="@lang('lables.search-placeholder')">									
 										<div class="input-group-btn">
 											<button class="btn btn-primary"><i class="ion-search"></i></button>
 										</div>
 									</div>
 								</div>
-								<div class="help-block">
+								<!-- <div class="help-block">
 									<div>Popular:</div>
 									<ul>
 										<li><a href="#">HTML5</a></li>
@@ -28,7 +28,7 @@
 										<li><a href="#">jQuery</a></li>
 										<li><a href="#">AnguarJS</a></li>
 									</ul>
-								</div>
+								</div> -->
 							</form>								
 						</div>
 						<div class="col-md-3 col-sm-12 text-right">
@@ -38,8 +38,8 @@
 
 							@guest
 
-								<li><a href="{{ route('register') }}"><i class="ion-person-add"></i><div>{{ __('Register') }}</div></a></li>
-								<li><a href="{{ route('login') }}"><i class="ion-person"></i><div>{{ __('Login') }}</div></a></li>
+								<li><a href="{{ route('register') }}"><i class="ion-person-add"></i><div>@lang('lables.register')</div></a></li>
+								<li><a href="{{ route('login') }}"><i class="ion-person"></i><div>@lang('lables.login')</div></a></li>
 
 								@else
 									<li class="nav-item dropdown">
@@ -51,7 +51,7 @@
 	                                    <a class="dropdown-item" href="{{ route('logout') }}"
 	                                       onclick="event.preventDefault();
 	                                                     document.getElementById('logout-form').submit();">
-	                                        {{ __('Logout') }}
+	                                        @lang('lables.logout')
 	                                    </a>
 
 	                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -91,18 +91,18 @@
 				                @auth
 			                       	<!-- <a href="{{ url('/') }}">Home</a> -->
 				                @else
-								   <li class="for-tablet"><a href="{{ route('login') }}">Login</a></li>
-								   <li class="for-tablet"><a href="{{ route('register') }}">Register</a></li>
+								   <li class="for-tablet"><a href="{{ route('login') }}">@lang('lables.login')</a></li>
+								   <li class="for-tablet"><a href="{{ route('register') }}">@lang('lables.register')</a></li>
 								@endauth
 				                
 				            @endif	
 							
 
-							<li><a href="/">Home</a></li>
+							<li><a href="/">@lang('lables.header-home')</a></li>
 							<li class="dropdown magz-dropdown">
-								<a href="#"> Articals <i class="ion-ios-arrow-right"></i></a>
+								<a href="#"> @lang('lables.header-articles') <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
-						
+								
 								<!-- Articals Category -->
 									@foreach($catgs as $catg)
 
@@ -116,17 +116,17 @@
 							</li>
 							
 									<!-- Start Multimedia Category -->
-							<li class="dropdown magz-dropdown"><a href="#"> Multimedia <i class="
+							<li class="dropdown magz-dropdown"><a href="#"> @lang('lables.header-multimedia') <i class="
 								ion-ios-arrow-right"></i></a>
 								
 								<ul class="dropdown-menu">
 
 									<!-- Start Multimedia Photos -->
-									<li class="dropdown magz-dropdown"><a href="#"> Photos <i class="ion-ios-arrow-right"></i></a>
+									<li class="dropdown magz-dropdown"><a href="#"> @lang('lables.header-photos') <i class="ion-ios-arrow-right"></i></a>
 										
 										<ul class="dropdown-menu">
 											
-											<li><a href="/albums/albums"> Albums </a></li>
+											<li><a href="/albums/albums"> @lang('lables.header-albums') </a></li>
 											
 										</ul>
 									
@@ -134,12 +134,12 @@
 									<!-- End Multimedia Photos -->
 									
 									<!-- Start Multimedia Videos -->
-									<li class="dropdown magz-dropdown"><a href="#"> Videos <i class="ion-ios-arrow-right"></i></a>
+									<li class="dropdown magz-dropdown"><a href="#"> @lang('lables.header-videos') <i class="ion-ios-arrow-right"></i></a>
 										
 										<ul class="dropdown-menu">
 											
-											<li><a href="/albums/videoLists"> Play Lists </a></li>
-											<li><a href="/albums/channelLists"> Channels </a></li>
+											<li><a href="/albums/videoLists"> @lang('lables.header-playlists') </a></li>
+											<li><a href="/albums/channelLists"> @lang('lables.header-channels') </a></li>
 										
 										</ul>
 									
@@ -150,13 +150,13 @@
 							</li>
 									<!-- End Multimedia Category -->
 							
-							<li class="dropdown magz-dropdown"><a href="#"> Language <i class="
+							<li class="dropdown magz-dropdown"><a href="#"> @lang('lables.header-language') <i class="
 								ion-ios-arrow-right"></i></a>
 								
 								<ul class="dropdown-menu">
 									
-								<li><a href="locale/en">En</a></li>
-								<li><a href="locale/ar">Ar</a></li>
+								<li><a href="{{ route('locale', ['locale'=>'en']) }}">En</a></li>
+								<li><a href="{{ route('locale', ['locale'=>'ar']) }}">العربية</a></li>
 
 								</ul>
 							</li>

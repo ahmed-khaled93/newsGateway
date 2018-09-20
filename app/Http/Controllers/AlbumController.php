@@ -9,7 +9,7 @@ use App\Http\Requests\Backend\Albums\storeNewAlbumRequest;
 use App\Http\Requests\Backend\Albums\storeNewImageRequest;
 use App\Photo;
 use App\Album;
-use App\Catg;
+use App\Category;
 use Alaouy\Youtube\Facades\Youtube;
 
 class AlbumController extends Controller

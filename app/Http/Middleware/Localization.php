@@ -22,9 +22,12 @@ class Localization
  
             // You also can set the Carbon locale
             Carbon::setLocale(\Session::get('locale'));
+            // return redirect()->back();
+            // return $next($request);
         }
 
 
         return $next($request);
+        return back();
     }
 }

@@ -7,7 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "alaouy/youtube": "^2.2",
-        "dimsav/laravel-translatable": "8.*",
+        "dimsav/laravel-translatable": "5.5.*",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/passport": "~4.0",

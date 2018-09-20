@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a914fd59cef068b5f28c980945e374e9",
+    "content-hash": "4c9fbca068264851175ea10b09e9ebb4",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -127,34 +127,27 @@
         },
         {
             "name": "dimsav/laravel-translatable",
-            "version": "v8.1",
+            "version": "v5.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimsav/laravel-translatable.git",
-                "reference": "8bdcb62b580df98fc5d5540edc2d8aa9a2760db4"
+                "reference": "f4c4c096998d5cc68d5bac90af6d11a636e8b3af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dimsav/laravel-translatable/zipball/8bdcb62b580df98fc5d5540edc2d8aa9a2760db4",
-                "reference": "8bdcb62b580df98fc5d5540edc2d8aa9a2760db4",
+                "url": "https://api.github.com/repos/dimsav/laravel-translatable/zipball/f4c4c096998d5cc68d5bac90af6d11a636e8b3af",
+                "reference": "f4c4c096998d5cc68d5bac90af6d11a636e8b3af",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.5.*",
+                "illuminate/support": "~5.1",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "orchestra/testbench": "3.5.*",
-                "phpunit/phpunit": "~6.0"
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Dimsav\\Translatable\\TranslatableServiceProvider"
-                    ]
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Dimsav\\Translatable\\": "src/Translatable/"
@@ -181,7 +174,7 @@
                 "laravel",
                 "translation"
             ],
-            "time": "2018-01-04T20:11:56+00:00"
+            "time": "2016-04-10T18:27:27+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

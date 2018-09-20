@@ -14,6 +14,10 @@
 		<meta property="og:image" content="https://raw.githubusercontent.com/nauvalazhar/Magz/master/images/preview.png" />
 		<title>News Gateway</title>
 		@yield('css')
+		@if(\App::getLocale() == 'ar')
+			<!-- Load Bootstrap RTL theme from RawGit -->
+			<link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+		@endif
 	</head>
 
 	<body class="skin-orange">

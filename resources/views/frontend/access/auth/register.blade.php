@@ -27,12 +27,12 @@
                 <div class="box-wrapper">               
                     <div class="box box-border">
                         <div class="box-body">
-                            <h4>{{ __('Register') }}</h4>
+                            <h4>@lang('lables.register')</h4>
                             <form method="POST" action="{{ route('register') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group">
-                                    <label>{{ __('Name') }}</label>
+                                    <label>@lang('lables.username')</label>
                                     <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" required autofocus>
 
                                     @if ($errors->has('name'))
@@ -44,7 +44,7 @@
                                 
 
                                 <div class="form-group">
-                                    <label for="email">{{ __('E-Mail Address') }}</label>
+                                    <label for="email">@lang('lables.email')</label>
                                     <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" required>
 
                                     @if ($errors->has('email'))
@@ -56,7 +56,7 @@
 
 
                                 <div class="form-group">
-                                    <label class="fw">{{ __('Password') }}</label>
+                                    <label class="fw">@lang('lables.password')</label>
                                     <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required>
 
                                     @if ($errors->has('password'))
@@ -67,17 +67,17 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="fw">{{ __('Password Confirmation') }}</label>
+                                    <label class="fw">@lang('lables.confirm-password')</label>
                                     <input type="password" name="password_confirmation" class="form-control" required>
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
+                                    <button type="submit" class="btn btn-primary btn-block">@lang('lables.register')</button>
                                 </div>
                                 
 
                                 <div class="form-group text-center">
-                                    <span class="text-muted">Already have an account?</span> <a href="/login">Login</a>
+                                    <span class="text-muted">@lang('lables.have-account')</span> <a href="/login">@lang('lables.login')</a>
                                 </div>
                             
                             </form>

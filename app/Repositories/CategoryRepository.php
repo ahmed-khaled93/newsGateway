@@ -6,8 +6,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Backend\Albums\storeNewAlbumRequest;
 use App\Article;
-use App\Catg;
+use App\Category;
 use App\Album;
+use App\CategoryTranslation;
 
 
 class CategoryRepository
@@ -16,7 +17,7 @@ class CategoryRepository
 // ---------------------------------- Front End ------------------------------------------
 	public function getArticleByName($catName)
 	{
-		$cat = Catg::with('articles')->where('title', '=', $catName)->get();
+		$cat = Category::with('articles')->where('title', '=', $catName)->get();
 		$articles = $cat[0]->articles;
 		return $articles;
 	}
@@ -26,7 +27,7 @@ class CategoryRepository
 
 	public function getAllCategories()
 	{
-		$catgs = Catg::all();
+		$catgs = Category::all();
 		return $catgs;
 	}
 

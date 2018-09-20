@@ -5,6 +5,10 @@ namespace App;
 
 class Album extends Model
 {
+	use \Dimsav\Translatable\Translatable;
+
+	public $translationModel = 'App\AlbumTranslation';
+	public $translatedAttributes = ['title'];
     
 	public function photos()
     {
