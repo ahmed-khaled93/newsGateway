@@ -30,16 +30,18 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $catgs = Category::all();
+        $categories = Category::all();
+        // dd(App::getLocale());
         // $translate = Article::translated()->get();
-        // dd($translate);
+        // dd($categories);
         $photos = Photo::orderBy('id', 'desc')->take(8)->get();
+        // $article = Article::first();
         $articles = Article::orderBy('id', 'desc')->take(5)->get();
-        dd($articles);
-        $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
+        // dd($articles);
+        $hotnews  = Article::orderBy('id','desc')->take(4)->get();  
         $urgent = Urgent::latest()->get();
         
-        return view('frontend.index', compact('photos', 'articles', 'urgent', 'hotnews','locale'));       
+        return view('frontend.index', compact('photos', 'articles', 'urgent', 'hotnews', 'categories', 'locale'));       
     }
 
 
@@ -52,7 +54,7 @@ class HomeController extends Controller
     //     // if (App::isLocale('en')) 
     //     // { 
     //     \Session::put('locale', $locale);
-    //         $catgs = Category::catgs();
+    //         $categories = Category::categories();
     //         $photos = Photo::orderBy('id', 'desc')->take(8)->get();
     //         $articles = Article::orderBy('id', 'desc')->take(5)->get();
     //         $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  
@@ -62,7 +64,7 @@ class HomeController extends Controller
         
     //     // }elseif (App::isLocale('ar')) 
     //     // {
-    //     //     $catgs = Category::catgs();
+    //     //     $categories = Category::categories();
     //     //     $photos = Photo::orderBy('id', 'desc')->take(8)->get();
     //     //     $articles = Article::orderBy('id', 'desc')->take(5)->get();
     //     //     $hotnews  = Article::orderBy('id','desc')->skip(5)->take(4)->get();  

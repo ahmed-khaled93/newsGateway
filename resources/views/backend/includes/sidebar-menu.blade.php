@@ -34,7 +34,7 @@
             
             @foreach($categories as $category)
 
-            <li class="{{ in_array('catg_id', (isset($menuArticles) ? $menuArticles : [])) ? 'active' : '' }}">
+            <li class="{{ in_array('category_id', (isset($menuArticles) ? $menuArticles : [])) ? 'active' : '' }}">
               <a href="/dashboard/articles/{{$category->id}}">
                 <i class="fa fa-circle-o"></i>
                   {{ $category->title }} 

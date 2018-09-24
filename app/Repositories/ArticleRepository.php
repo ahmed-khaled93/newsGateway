@@ -39,8 +39,15 @@ class ArticleRepository
 
 	public function storeArticle(StoreAndUpdateArticleRequest $request)
 	{
-		
-    	$article = new Article(request(['title','body','category_id']));
+		// dd($request);
+    	$article = new Article(request(['category_id']));
+
+    	$article = $article->fill([
+    	'title:en' => $request->titleEn,
+    	'body:en' => $request->bodyEn,
+    	'title:ar' => $request->titleAr,
+    	'body:ar' => $request->bodyAr,
+		]);
 
 		$image = request('image');
 		

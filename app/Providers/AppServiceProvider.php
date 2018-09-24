@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('frontend.includes.header', function($view)
         {
 
-            $view->with('catgs',\App\Category::catgs());
+            $view->with('categories',\App\Category::categories());
 
         });
 

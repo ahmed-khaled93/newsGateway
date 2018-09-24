@@ -13,8 +13,8 @@
 					<h1><a href="{{ action('ArticleController@show', $article) }}">{{$article->title}}</a></h1>
 					<div class="time">{{$article->created_at->toFormattedDateString()}}</div>
 						<!-- <div class="time"> -->
-							<a href="/categories/{{ $article->catgs->title }}">
-							{{$article->catgs->title}}
+							<a href="/categories/{{ $article->categories->title }}">
+							{{$article->categories->title}}
 							</a>
 						<!-- </div> -->
 				</div>

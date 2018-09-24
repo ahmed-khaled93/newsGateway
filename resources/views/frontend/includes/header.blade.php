@@ -104,7 +104,7 @@
 								<ul class="dropdown-menu">
 								
 								<!-- Articals Category -->
-									@foreach($catgs as $catg)
+									@foreach($categories as $catg)
 
 										<li><a href="/categories/{{ $catg->title }}">{{ $catg->title }}</a></li>
 

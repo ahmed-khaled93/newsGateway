@@ -50,7 +50,7 @@ CREATE TABLE `articles` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `catg_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -60,7 +60,7 @@ CREATE TABLE `articles` (
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`id`, `title`, `body`, `catg_id`, `image`, `created_at`, `updated_at`) VALUES
+INSERT INTO `articles` (`id`, `title`, `body`, `category_id`, `image`, `created_at`, `updated_at`) VALUES
 (1, 'sport', 'sportsport', 1, '1532598509.jpg', '2018-07-01 23:23:00', '2018-07-01 23:26:00'),
 (2, 'Something Just Like This', 'bivbui hgddsl\r\nkllh\r\nbcfhl', 2, '1535639027.jpg', '2018-08-30 12:23:48', '2018-08-30 12:24:16'),
 (3, 'history', 'history table test', 3, '1536149622.jpeg', '2018-09-05 10:13:42', '2018-09-05 13:56:01'),
@@ -121,10 +121,10 @@ INSERT INTO `article_translations` (`id`, `article_id`, `title`, `body`, `locale
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catgs`
+-- Table structure for table `categories`
 --
 
-CREATE TABLE `catgs` (
+CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -132,10 +132,10 @@ CREATE TABLE `catgs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `catgs`
+-- Dumping data for table `categories`
 --
 
-INSERT INTO `catgs` (`id`, `title`, `created_at`, `updated_at`) VALUES
+INSERT INTO `categories` (`id`, `title`, `created_at`, `updated_at`) VALUES
 (1, 'Sport', '2018-08-30 09:15:00', '2018-08-30 09:16:00'),
 (2, 'Art', '2018-08-30 09:24:16', '2018-08-30 09:27:31'),
 (3, 'History', '2018-08-30 10:18:30', '2018-08-30 10:29:25'),
@@ -181,7 +181,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
 (8, '2018_06_11_130922_create_verify_users_table', 1),
 (9, '2018_06_20_152114_create_articles_table', 1),
-(10, '2018_06_24_140546_create_catgs_table', 1),
+(10, '2018_06_24_140546_create_categories_table', 1),
 (11, '2018_07_08_143937_create_photos_table', 1),
 (12, '2018_07_08_144300_create_albums_table', 1),
 (13, '2018_08_01_141244_create_urgents_table', 1),
@@ -451,9 +451,9 @@ ALTER TABLE `article_translations`
   ADD KEY `article_translations_locale_index` (`locale`);
 
 --
--- Indexes for table `catgs`
+-- Indexes for table `categories`
 --
-ALTER TABLE `catgs`
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -565,9 +565,9 @@ ALTER TABLE `articles`
 ALTER TABLE `article_translations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `catgs`
+-- AUTO_INCREMENT for table `categories`
 --
-ALTER TABLE `catgs`
+ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `event_histories`

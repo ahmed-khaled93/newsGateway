@@ -17,8 +17,10 @@ class CategoryRepository
 // ---------------------------------- Front End ------------------------------------------
 	public function getArticleByName($catName)
 	{
-		$cat = Category::with('articles')->where('title', '=', $catName)->get();
-		$articles = $cat[0]->articles;
+		$cat = CategoryTranslation::where('title', '=', $catName)->first();
+		
+		$articles =  Article::where('category_id', '=', $cat->category_id)->get();
+		// dd($articles);
 		return $articles;
 	}
 // ---------------------------------------------------------------------------------------
@@ -27,8 +29,8 @@ class CategoryRepository
 
 	public function getAllCategories()
 	{
-		$catgs = Category::all();
-		return $catgs;
+		$categories = Category::all();
+		return $categories;
 	}
 
 // ------------------------------------------------------------------

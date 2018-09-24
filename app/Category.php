@@ -18,15 +18,15 @@ class Category extends Model
     }
 
     
-	public static function catgs()
-	{
-		return static::all();
-	}
-
-
 	public static function categories()
 	{
 		return static::all();
 	}
+
+
+	// public static function categories()
+	// {
+	// 	return static::all();
+	// }
 
 }

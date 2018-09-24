@@ -78,17 +78,17 @@
 
               <div class="box-body">
 
-                <div class="form-group{{ $errors->has('catg_id') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                     <label> Category type : </label>
                     
                     
 
-                    <select name="catg_id" class="form-control{{ $errors->has('catg_id') ? ' is-invalid' : '' }}" required >
+                    <select name="category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" required >
                         
 
                         @foreach($categories as $category)
                             
-                            <option value="{{ $category->id }}" {{ ($article->catg_id == $category->id)? 'selected' : '' }}> {{ $category->title }} </option>
+                            <option value="{{ $category->id }}" {{ ($article->category_id == $category->id)? 'selected' : '' }}> {{ $category->title }} </option>
                         
                         @endforeach
                     

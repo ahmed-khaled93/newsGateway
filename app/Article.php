@@ -1,23 +1,24 @@
 <?php
 
 namespace App;
-use Dimsav\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Article extends Eloquent
+class Article extends Model
 {
-    use \Dimsav\Translatable\Translatable;
-	// use Translatable;
+	use \Dimsav\Translatable\Translatable;
+		
+    public $translatedAttributes = ['title', 'body'];
+	
+	// protected $guarded = [];
 
-    // public $translationModel = 'App\ArticleTranslation';
-    public $translatedAttributes = ['title','body'];
+	// public $translationModel = 'App\ArticleTranslation';
+    // public $translatedAttributes = ['title','body'];
+    // protected $fillable = ['category_id'];
     
-    
-	public function catgs()
+	public function categories()
 	{
-
 		return $this->belongsTo('App\Category','category_id');
-
 	}
 
 }
+
+

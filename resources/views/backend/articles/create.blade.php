@@ -78,16 +78,16 @@
 
               <div class="box-body">
 
-                <div class="form-group{{ $errors->has('catg_id') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                     <label> Category type : </label>
                     
                     
 
-                    <select name="catg_id" class="form-control" required >
+                    <select name="category_id" class="form-control" required >
                         
                         <option></option>
 
-                        @foreach($catgs as $catg)
+                        @foreach($categories as $catg)
                             
                             <option value="{{ $catg->id }}"> {{ $catg->title }} </option>
                         

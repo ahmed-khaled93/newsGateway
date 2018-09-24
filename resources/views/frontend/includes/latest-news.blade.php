@@ -7,7 +7,9 @@
 <div class="row">
 	<div class="col-md-12 col-sm-6 col-xs-12">
 		<div class="row">	
+
 			@foreach($hotnews as $article)
+			@foreach($categories as $category)
 				<article class="article col-md-6">
 					<div class="inner">
 						<figure>
@@ -22,8 +24,8 @@
 								<div class="time">{{$article->created_at->toFormattedDateString()}}</div>
 								
 								<div class="category">
-									<a href="/categories/{{ $article->catgs->title }}">
-									{{$article->catgs->title}}
+									<a href="/categories/{{$category->title}}">
+									{{$category->title}}
 									</a>
 								</div>
 							</div>
@@ -46,6 +48,7 @@
 					
 					</div>
 				</article>
+			@endforeach
 			@endforeach
 		</div>
 	</div>

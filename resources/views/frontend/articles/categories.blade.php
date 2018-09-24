@@ -43,8 +43,8 @@
 									<div class="time"> 
 										{{ $article->created_at->toFormattedDateString() }} 
 									</div>
-									<div class="category"><a href="/categories/{{ $article->catgs->title }}">
-									{{$article->catgs->title}}
+									<div class="category"><a href="/categories/{{ $article->categories->title }}">
+									{{$article->categories->title}}
 									</a></div>
 								</div>
 								

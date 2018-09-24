@@ -83,8 +83,10 @@
                   <tr>
                     
                     <th> ID </th>
-                    <th> Title </th>
-                    <th> Body </th>
+                    <th> Title En </th>
+                    <th> Body En </th>
+                    <th> Title Ar </th>
+                    <th> Body Ar </th>
                     <th> Image </th>
                     <th></th>
                     <th></th>
@@ -98,8 +100,10 @@
                 <tr>  
 
                   <td> {{ $article->id }} </td>
-                  <td class="article-title"> {{ $article->title }} </td>
-                  <td class="article-body"> {{ $article->body }} </td>
+                  <td class="article-titleEn"> {{ $article->{'title:en'} }} </td>
+                  <td class="article-bodyEn"> {{ $article->{'body:en'} }} </td>
+                  <td class="article-titleAr"> {{ $article->{'title:ar'} }} </td>
+                  <td class="article-bodyAr"> {{ $article->{'body:ar'} }} </td>
                   <td class="article-image"><img src="/images/articles/{{ $article->image }}" style="width:100px"></td> 
                   <td>   
                     <a class="btn btn-warning" href="#"  data-toggle="modal" data-target="#modal-edit" data-id="{{ $article->id }}"> Edit </a>
@@ -151,33 +155,42 @@
 
               <div class="box-body">
 
-                <div class="form-group{{ $errors->has('catg_id') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                     <label> Category type : </label>
                                       
-                    <select name="catg_id" class="form-control" required >
+                    <select name="category_id" class="form-control" required >
                         
                         <option></option>
 
-                        @foreach($catgs as $catg)
+                        @foreach($categories as $category)
                             
-                            <option value="{{ $catg->id }}"> {{ $catg->title }} </option>
+                            <option value="{{ $category->id }}"> {{ $category->title }} </option>
                         
                         @endforeach
                     
                     </select>
+                  <div class="form-group{{ $errors->has('titleEn') ? ' has-error' : '' }}">
+                      <label for="title">Title En : </label>
+                      <input type="text" class="form-control" name="titleEn" id="titleEn"  autofocus  value="">
+                  </div>
+                
+                  <div class="form-group{{ $errors->has('bodyEn') ? ' has-error' : '' }}">
+                      <label for="body">Body En : </label>
+                      <textarea id="bodyEn" name="bodyEn" class="form-control" required >  </textarea>
+                  </div>
+
+                  <div class="form-group{{ $errors->has('titleAr') ? ' has-error' : '' }}">
+                      <label for="title">Title Ar : </label>
+                      <input type="text" class="form-control" name="titleAr" id="titleAr"  autofocus  value="">
+                  </div>
+                  
+                  <div class="form-group{{ $errors->has('bodyAr') ? ' has-error' : '' }}">
+                      <label for="body">Body Ar : </label>
+                      <textarea id="bodyAr" name="bodyAr" class="form-control" required >  </textarea>
+                  </div>
 
                 </div>
                 
-                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                    <label for="title">Title : </label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Article Title" autofocus required>
-                </div>
-                
-                <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                    <label for="body">Body : </label>
-                    <textarea id="body" name="body" class="form-control" placeholder="Article Body" required ></textarea>
-                </div>
-
                 <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                   <label for="exampleInputFile">File input</label>
                   <input type="file" id="exampleInputFile" name="image" class="form-control">
@@ -234,14 +247,14 @@
 
               <div class="box-body">
 
-                <div class="form-group{{ $errors->has('catg_id') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                     <label> Category type : </label>
                     
-                    <select name="catg_id" class="form-control{{ $errors->has('catg_id') ? ' is-invalid' : '' }}" required >
+                    <select name="category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" required >
                         
-                        @foreach($catgs as $category)
+                        @foreach($categories as $category)
                             
-                            <option value="{{ $category->id }}" {{ ($articles[0]->catg_id == $category->id)? 'selected' : '' }}> {{ $category->title }} </option>
+                            <option value="{{ $category->id }}" {{ ($articles[0]->category_id == $category->id)? 'selected' : '' }}> {{ $category->title }} </option>
                         
                         @endforeach
                     
@@ -249,15 +262,26 @@
 
                 </div>
                                                 
-                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                    <label for="title">Title : </label>
-                    <input type="text" class="form-control" name="title" id="title"  autofocus  value="">
+                <div class="form-group{{ $errors->has('titleEn') ? ' has-error' : '' }}">
+                    <label for="title">Title En : </label>
+                    <input type="text" class="form-control" name="titleEn" id="titleEn"  autofocus  value="">
                 </div>
                 
-                <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                    <label for="body">Body : </label>
-                    <textarea id="body" name="body" class="form-control" required >  </textarea>
+                <div class="form-group{{ $errors->has('bodyEn') ? ' has-error' : '' }}">
+                    <label for="body">Body En : </label>
+                    <textarea id="bodyEn" name="bodyEn" class="form-control" required >  </textarea>
                 </div>
+
+                <div class="form-group{{ $errors->has('titleAr') ? ' has-error' : '' }}">
+                    <label for="title">Title Ar : </label>
+                    <input type="text" class="form-control" name="titleAr" id="titleAr"  autofocus  value="">
+                </div>
+                
+                <div class="form-group{{ $errors->has('bodyAr') ? ' has-error' : '' }}">
+                    <label for="body">Body Ar : </label>
+                    <textarea id="bodyAr" name="bodyAr" class="form-control" required >  </textarea>
+                </div>
+
                 <div id="photo">
                 <figure>
                     <label for="body">Image : </label><br>
@@ -367,8 +391,10 @@
       // alert($(e.relatedTarget).closest('tr').find('.news-row').html());
       var articleId = $(e.relatedTarget).data('id');
       $(e.currentTarget).find('#hdnEditId').val(articleId);
-      $(e.currentTarget).find('#title').val($(e.relatedTarget).closest('tr').find('.article-title').html());
-      $(e.currentTarget).find('#body').val($(e.relatedTarget).closest('tr').find('.article-body').html());
+      $(e.currentTarget).find('#titleEn').val($(e.relatedTarget).closest('tr').find('.article-titleEn').html());
+      $(e.currentTarget).find('#bodyEn').val($(e.relatedTarget).closest('tr').find('.article-bodyEn').html());
+      $(e.currentTarget).find('#titleAr').val($(e.relatedTarget).closest('tr').find('.article-titleAr').html());
+      $(e.currentTarget).find('#bodyAr').val($(e.relatedTarget).closest('tr').find('.article-bodyAr').html());
       $(e.currentTarget).find('#photo').find('img').attr('src', $(e.relatedTarget).closest('tr').find('img').attr('src'
         ));
     });
@@ -376,8 +402,10 @@
     $('#modal-edit').on('hidden.bs.modal', function (e) {
    
       $(e.currentTarget).find('#hdnEditId').val('');
-      $(e.currentTarget).find('#title').val('');
-      $(e.currentTarget).find('#body').val('');
+      $(e.currentTarget).find('#titleEn').val('');
+      $(e.currentTarget).find('#bodyEn').val('');
+      $(e.currentTarget).find('#titleAr').val('');
+      $(e.currentTarget).find('#bodyAr').val('');
       $(e.currentTarget).find('#photo').find('img').attr('src','');
 
     });

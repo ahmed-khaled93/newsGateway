@@ -49,26 +49,26 @@ class ArticleController extends Controller
 	public function dashboardArticles($id)
 	{
 		$articles = $this->articleRepository->getArticleById($id);
-		$catgs = $this->categoryRepository->getAllCategories();
+		$categories = $this->categoryRepository->getAllCategories();
 		$menuArticles = ['articles', 'category_id'];
 
-		return view('backend.articles.articles',compact('articles', 'menuArticles', 'catgs') );
+		return view('backend.articles.articles',compact('articles', 'menuArticles', 'categories') );
 		return session('message');
 	}
 
 
 	public function create(CategoryRepository $CategoryRepository)
 	{
-		$catgs = $CategoryRepository->getAllCategories();
-		return view('backend.articles.create', compact('catgs'));
+		$categories = $CategoryRepository->getAllCategories();
+		return view('backend.articles.create', compact('categories'));
 	}
 
 
 	public function store(StoreAndUpdateArticleRequest $request)
 	{
 
+		// dd($request->category_id);
 		$article = $this->articleRepository->storeArticle($request);
-		// dd($article);
 		// \Event::fire('App\Events\CreateArticle', ['name'=>"new Event"]);
 		event(new \App\Events\ArticleEvents(['CreateArticle']));
 		return redirect('/dashboard/articles/'.$request->category_id);

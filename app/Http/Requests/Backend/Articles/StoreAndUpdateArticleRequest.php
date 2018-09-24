@@ -30,8 +30,10 @@ class StoreAndUpdateArticleRequest extends FormRequest
         return [        
 
             'category_id'   =>  'required',
-            'title'     =>  'required|min:3|max:191',
-            'body'      =>  'required',
+            'titleEn'     =>  'required|min:3|max:191',
+            'bodyEn'      =>  'required',
+            'titleAr'     =>  'required|min:3|max:191',
+            'bodyAr'      =>  'required',
             // 'image'     =>  'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 
         ];
