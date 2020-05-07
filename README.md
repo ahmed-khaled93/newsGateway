@@ -1,2 +1,1 @@
 # newsGateway
-# newsGateway
